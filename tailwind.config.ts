@@ -9,10 +9,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#007AFF",
+        alert: "##f6f6f6",
+        popover: "##f1f1f1",
+        close: "##FF5F57",
+        minimize: "##FEBC2E",
+        maximize: "#28C840",
+        background: "#fff",
+        sidebar: "#e6e6e6",
+        textPrimary: "#222",
       },
     },
   },
-  plugins: [],
 } satisfies Config;
