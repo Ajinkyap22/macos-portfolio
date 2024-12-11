@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
+import "@/app/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const SFPro = localFont({
+  src: [
+    {
+      path: "../../public/fonts/SF-Pro.ttf",
+      style: "normal",
+      weight: "400",
+    },
+    {
+      path: "../../public/fonts/SF-Pro-Text-Medium.otf",
+      style: "normal",
+      weight: "500",
+    },
+    {
+      path: "../../public/fonts/SF-Pro-Text-Bold.otf",
+      style: "normal",
+      weight: "700",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -23,12 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${SFPro.className} antialiased`}>{children}</body>
     </html>
   );
 }
