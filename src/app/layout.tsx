@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/app/globals.css";
 
+import Menubar from "@/components/Menubar";
+import WallpaperProvider from "@/providers/WallpaperProvider";
+
 const SFPro = localFont({
   src: [
     {
@@ -34,7 +37,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${SFPro.className} antialiased`}>{children}</body>
+      <body className={`${SFPro.className} initial-bg antialiased`}>
+        <WallpaperProvider>
+          <Menubar />
+
+          {children}
+        </WallpaperProvider>
+      </body>
     </html>
   );
 }
