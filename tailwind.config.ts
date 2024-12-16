@@ -18,12 +18,29 @@ export default {
         background: "#fff",
         sidebar: "#e6e6e6",
         textPrimary: "#222",
+        dock: "#f6f6f65c",
+        "dock-dark": "#4a4a4a63",
       },
       boxShadow: {
         "all-around":
           "0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.12)",
         "all-around-primary":
           "0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 0 0 0.5px #007AFF",
+      },
+      width: {
+        4.5: "18px",
+      },
+      height: {
+        4.5: "18px",
+      },
+      padding: {
+        4.5: "18px",
+      },
+      fontSize: {
+        regular: ["13px", "16px"],
+      },
+      gap: {
+        4.5: "18px",
       },
     },
   },
