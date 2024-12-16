@@ -12,14 +12,15 @@ import Button from "@/components/ui/Button";
 
 import Image from "next/image";
 import Tick from "@/icons/tick.svg";
+import Wallpaper from "@/icons/wallpaper.svg";
 
 import { wallpapersData } from "@/data/wallpapersData";
 
 const Wallpapers = () => {
   return (
-    <Popover className="relative">
+    <Popover className="relative flex items-center">
       <PopoverButton className="text-sm focus:outline-none">
-        Wallpapers
+        <Image src={Wallpaper} alt="Wallpapers" className="h-4.5 w-4.5" />
       </PopoverButton>
 
       <PopoverContent />
