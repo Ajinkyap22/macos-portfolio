@@ -14,3 +14,13 @@ body {
 body {
   background-size: cover;
 }
+
+.open::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-image: url("/indicator-dot.svg");
+}

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "@/app/globals.css";
 
 import Menubar from "@/components/Menubar";
+import Dock from "@/components/Dock";
 import WallpaperProvider from "@/providers/WallpaperProvider";
 
 const SFPro = localFont({
@@ -13,12 +14,17 @@ const SFPro = localFont({
       weight: "400",
     },
     {
-      path: "../../public/fonts/SF-Pro-Text-Medium.otf",
+      path: "../../public/fonts/SFProDisplay-Medium.woff2",
       style: "normal",
       weight: "500",
     },
     {
-      path: "../../public/fonts/SF-Pro-Text-Bold.otf",
+      path: "../../public/fonts/SFProDisplay-Semibold.woff2",
+      style: "normal",
+      weight: "600",
+    },
+    {
+      path: "../../public/fonts/SFProDisplay-Bold1.woff2",
       style: "normal",
       weight: "700",
     },
@@ -42,6 +48,8 @@ export default function RootLayout({
           <Menubar />
 
           {children}
+
+          <Dock />
         </WallpaperProvider>
       </body>
     </html>
