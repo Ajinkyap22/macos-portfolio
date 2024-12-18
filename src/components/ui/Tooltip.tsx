@@ -16,8 +16,8 @@ const Tooltip = ({ id, content, place = "top", offset = 10 }: Props) => {
       id={id}
       content={content}
       place={place}
-      className="shadow-all-around !text-regular !rounded !bg-sidebar !py-1.5 !text-textPrimary"
-      classNameArrow="!bg-sidebar shadow-all-around-top"
+      className="shadow-all-around !text-regular !bg-tooltip !rounded !py-1.5 !text-textPrimary"
+      classNameArrow="!bg-tooltip shadow-all-around-top"
       offset={offset}
     />
   );

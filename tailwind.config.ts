@@ -17,9 +17,11 @@ export default {
         maximize: "#28C840",
         background: "#fff",
         sidebar: "#e6e6e6",
+        tooltip: "#c5c5c5",
         textPrimary: "#222",
         dock: "#f6f6f65c",
         "dock-dark": "#4a4a4a63",
+        selected: "#ffffff33",
         ghost: "#00000004",
       },
       boxShadow: {
