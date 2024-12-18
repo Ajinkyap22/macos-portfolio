@@ -31,7 +31,11 @@ const LiveDate = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <span className="text-regular font-semibold text-white">{date}</span>;
+  return (
+    <span className="text-regular pl-2 pr-3 font-semibold text-white">
+      {date}
+    </span>
+  );
 };
 
 export default LiveDate;
