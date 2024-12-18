@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
+
+import type { Metadata } from "next";
 import "@/app/globals.css";
 
-import Menubar from "@/components/Menubar";
 import Dock from "@/components/Dock";
+import Menubar from "@/components/Menubar";
+
+import FullscreenProvider from "@/providers/FullscreenProvider";
 import WallpaperProvider from "@/providers/WallpaperProvider";
 
 const SFPro = localFont({
@@ -44,13 +47,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${SFPro.className} initial-bg antialiased`}>
-        <WallpaperProvider>
-          <Menubar />
+        <FullscreenProvider>
+          <WallpaperProvider>
+            <Menubar />
 
-          {children}
+            {children}
 
-          <Dock />
-        </WallpaperProvider>
+            <Dock />
+          </WallpaperProvider>
+        </FullscreenProvider>
       </body>
     </html>
   );

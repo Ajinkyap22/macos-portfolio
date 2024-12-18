@@ -1,27 +1,20 @@
 import React from "react";
 
+import Image from "next/image";
+
+import FullscreenToggle from "@/components/FullscreenToggle";
+import LiveDate from "@/components/LiveDate";
 import Wallpapers from "@/components/Wallpapers";
 
-import Image from "next/image";
 import AppleLight from "@/icons/apple-light.svg";
-import SearchIcon from "@/icons/search.svg";
-import Options from "@/icons/menu-options.svg";
-import Wifi from "@/icons/wifi.svg";
 import Github from "@/icons/github.svg";
 import LinkedIn from "@/icons/linkedin.svg";
+import Options from "@/icons/menu-options.svg";
+import SearchIcon from "@/icons/search.svg";
+import Wifi from "@/icons/wifi.svg";
 import YouTube from "@/icons/youtube.svg";
 
 const Menubar = () => {
-  // need date in this format - Sat 14 Dec 5.49PM
-  const date = new Date().toLocaleString("en-US", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
-
   return (
     <div className="px-4.5 flex items-center justify-between bg-black/40 py-1">
       <div className="gap-x-4.5 flex items-center">
@@ -77,8 +70,11 @@ const Menubar = () => {
 
         <Wallpapers />
 
+        {/* fullscreen toggle */}
+        <FullscreenToggle />
+
         {/* date */}
-        <span className="text-regular font-semibold text-white">{date}</span>
+        <LiveDate />
       </div>
     </div>
   );

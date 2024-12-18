@@ -2,14 +2,15 @@
 
 import React from "react";
 
-import { skillsData } from "@/data/skillsData";
-
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
-import Finder from "@/icons/finder.png";
-import LaunchPad from "@/icons/launchpad.png";
 
 import Tooltip from "@/components/ui/Tooltip";
+
+import { skillsData } from "@/data/skillsData";
+
+import Finder from "@/icons/finder.png";
+import LaunchPad from "@/icons/launchpad.png";
 
 const Dock = () => {
   return (

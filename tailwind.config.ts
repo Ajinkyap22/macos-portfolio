@@ -20,6 +20,7 @@ export default {
         textPrimary: "#222",
         dock: "#f6f6f65c",
         "dock-dark": "#4a4a4a63",
+        ghost: "#00000004",
       },
       boxShadow: {
         "all-around":
@@ -39,9 +40,13 @@ export default {
       },
       fontSize: {
         regular: ["13px", "16px"],
+        mini: ["11px", "14px"],
       },
       gap: {
         4.5: "18px",
+      },
+      borderRadius: {
+        regular: "10px",
       },
     },
   },
