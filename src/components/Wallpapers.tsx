@@ -14,8 +14,12 @@ import Wallpaper from "@/icons/wallpaper.svg";
 const Wallpapers = () => {
   return (
     <Popover className="relative flex items-center">
-      <PopoverButton className="text-sm focus:outline-none">
-        <Image src={Wallpaper} alt="Wallpapers" className="h-4.5 w-4.5" />
+      <PopoverButton className="hover:bg-selected rounded px-2 py-1 text-sm focus:outline-none">
+        <Image
+          src={Wallpaper}
+          alt="Wallpapers"
+          className="h-4.5 w-4.5 p-[1px]"
+        />
       </PopoverButton>
 
       <PopoverContent />

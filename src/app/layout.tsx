@@ -6,6 +6,7 @@ import "@/app/globals.css";
 import Dock from "@/components/Dock";
 import Menubar from "@/components/Menubar";
 
+import FinderProvider from "@/providers/FinderProvider";
 import FullscreenProvider from "@/providers/FullscreenProvider";
 import WallpaperProvider from "@/providers/WallpaperProvider";
 
@@ -46,16 +47,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${SFPro.className} initial-bg antialiased`}>
-        <FullscreenProvider>
-          <WallpaperProvider>
-            <Menubar />
+      <body
+        className={`${SFPro.className} initial-bg flex flex-col antialiased`}
+      >
+        <FinderProvider>
+          <FullscreenProvider>
+            <WallpaperProvider>
+              <Menubar />
 
-            {children}
+              {children}
 
-            <Dock />
-          </WallpaperProvider>
-        </FullscreenProvider>
+              <Dock />
+            </WallpaperProvider>
+          </FullscreenProvider>
+        </FinderProvider>
       </body>
     </html>
   );

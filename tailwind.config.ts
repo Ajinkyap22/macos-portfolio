@@ -23,6 +23,8 @@ export default {
         "dock-dark": "#4a4a4a63",
         selected: "#ffffff33",
         ghost: "#00000004",
+        stroke: "#00000033",
+        tertiary: "#00000040",
       },
       boxShadow: {
         "all-around":

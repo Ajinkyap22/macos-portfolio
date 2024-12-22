@@ -1,15 +1,16 @@
 import React from "react";
+
 import clsx from "clsx";
 
-const baseStyles =
-  "rounded-md px-2 py-1.5 text-[13px]/4 focus:outline-none shadow-all-around";
+const baseStyles = "rounded-md px-2 py-1.5 text-regular focus:outline-none";
 
 const variantStyles = {
-  secondary: "text-textPrimary",
+  secondary: "text-textPrimary shadow-all-around",
   primary: "bg-primary text-white shadow-all-around-primary",
+  ghost: "text-textPrimary bg-ghost",
 };
 
-type ButtonVariant = "secondary" | "primary";
+type ButtonVariant = "secondary" | "primary" | "ghost";
 
 type ButtonProps = {
   variant: ButtonVariant;

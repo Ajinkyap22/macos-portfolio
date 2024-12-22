@@ -22,11 +22,14 @@ const FullscreenToggle = () => {
   };
 
   return (
-    <button onClick={toggleFullscreen}>
+    <button
+      onClick={toggleFullscreen}
+      className="hover:bg-selected rounded px-2 py-1"
+    >
       <Image
         src={isFullscreen ? FullscreenExit : Fullscreen}
         alt="Fullscreen"
-        className="h-4.5 w-4.5"
+        className="h-4.5 w-4.5 p-[1px]"
       />
     </button>
   );
