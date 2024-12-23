@@ -1,37 +1,72 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
 
 import Image from "next/image";
-import { StaticImageData } from "next/image";
 
-import { FolderType } from "@/providers/FinderProvider";
+import clsx from "clsx";
+
+import { FolderType, FinderContext } from "@/providers/FinderProvider";
+
+import FolderIcon from "@/icons/folder.svg";
 
 type Props = {
-  icon: string | StaticImageData;
   name: FolderType;
   top: number;
-  right: number;
+  right?: number;
+  left?: number;
+  variant: "desktop" | "finder";
+  windowId?: string;
 };
 
-const Folder = ({ icon, name, top, right }: Props) => {
+const Folder = ({ name, top, right, left, variant, windowId }: Props) => {
+  const { openWindow, changeSection } = useContext(FinderContext);
+
+  const handleOpen = () => {
+    if (variant === "desktop") {
+      openWindow("Desktop", name);
+    } else {
+      changeSection(windowId!, "Desktop", name);
+    }
+  };
+
   return (
-    <div
+    <button
       style={{
         top: `${top}px`,
         right: `${right}px`,
+        left: `${left}px`,
       }}
-      className="group absolute flex flex-col items-end gap-y-1"
-      tabIndex={0}
+      data-variant={variant}
+      className="group absolute flex w-20 flex-col items-center outline-none data-[variant='desktop']:gap-y-1 data-[variant='finder']:gap-y-0.5"
+      onDoubleClick={handleOpen}
     >
       <Image
-        src={icon}
+        src={FolderIcon}
         alt="Folder"
-        className="h-[66px] w-[66px] rounded-md border-2 border-transparent p-0.5 group-hover:border-dock group-focus:border-dock"
+        data-variant={variant}
+        className={clsx(
+          "h-[66px] w-[66px] rounded-md border-2 border-transparent p-0.5",
+          {
+            "group-hover:border-dock group-focus:border-dock":
+              variant === "desktop",
+            "group-hover:bg-sidebar group-focus:bg-sidebar":
+              variant === "finder",
+          },
+        )}
       />
 
-      <span className="self-stretch rounded bg-black/20 px-1 py-0.5 text-center text-regular font-bold text-white group-focus:bg-primary">
+      <p
+        className={clsx(
+          "break-word group-focus:bg-focused rounded px-1 text-center text-regular",
+          variant === "desktop" && "bg-black/20 py-0.5 font-bold text-white",
+          variant === "finder" &&
+            "tracking-tight text-textPrimary group-focus:font-semibold group-focus:text-white",
+        )}
+      >
         {name}
-      </span>
-    </div>
+      </p>
+    </button>
   );
 };
 
