@@ -48,16 +48,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${SFPro.className} initial-bg flex flex-col overflow-hidden antialiased`}
+        className={`${SFPro.className} initial-bg overflow-hidden antialiased`}
       >
         <FinderProvider>
           <FullscreenProvider>
             <WallpaperProvider>
-              <Menubar />
+              <div className="flex h-full flex-col">
+                <Menubar />
 
-              {children}
+                {children}
 
-              <Dock />
+                <Dock />
+              </div>
             </WallpaperProvider>
           </FullscreenProvider>
         </FinderProvider>
