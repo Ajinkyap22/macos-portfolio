@@ -25,6 +25,7 @@ export default {
         ghost: "#00000004",
         stroke: "#00000033",
         tertiary: "#00000040",
+        focused: "#2962D9",
       },
       boxShadow: {
         "all-around":
@@ -45,6 +46,7 @@ export default {
       fontSize: {
         regular: ["13px", "16px"],
         mini: ["11px", "14px"],
+        emphasized: ["15px", "20px"],
       },
       gap: {
         4.5: "18px",
