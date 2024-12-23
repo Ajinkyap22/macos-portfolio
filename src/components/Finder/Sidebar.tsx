@@ -1,6 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
 
 import Image from "next/image";
+
+import { FinderContext } from "@/providers/FinderProvider";
 
 import Close from "@/icons/close.svg";
 import Desktop from "@/icons/desktop.svg";
@@ -12,21 +16,29 @@ type Props = {
   status: "minimized" | "maximized" | "normal";
   section: string;
   folder: string;
-  handleClose: () => void;
-  handleMinimize: () => void;
-  handleMaximize: () => void;
-  handleChangeSection: () => void;
+  windowId: string;
 };
 
-const Sidebar = ({
-  status,
-  section,
-  folder,
-  handleClose,
-  handleMinimize,
-  handleMaximize,
-  handleChangeSection,
-}: Props) => {
+const Sidebar = ({ status, section, folder, windowId }: Props) => {
+  const { closeWindow, minimizeWindow, maximizeWindow, changeSection } =
+    useContext(FinderContext);
+
+  const handleClose = () => {
+    closeWindow(windowId);
+  };
+
+  const handleMinimize = () => {
+    minimizeWindow(windowId);
+  };
+
+  const handleMaximize = () => {
+    maximizeWindow(windowId);
+  };
+
+  const handleChangeSection = () => {
+    changeSection(windowId, "Desktop", "Desktop");
+  };
+
   return (
     <div
       data-status={status}

@@ -56,10 +56,6 @@ type Props = {
   history: { section: string; folder: FolderType }[];
   currentIndex: number;
   windowId: string;
-  handleClose: () => void;
-  handleMinimize: () => void;
-  handleMaximize: () => void;
-  handleChangeSection: () => void;
   handleBack: () => void;
   handleForward: () => void;
 };
@@ -72,10 +68,6 @@ const FinderSheet = ({
   history,
   currentIndex,
   windowId,
-  handleClose,
-  handleMinimize,
-  handleMaximize,
-  handleChangeSection,
   handleBack,
   handleForward,
 }: Props) => {
@@ -87,13 +79,10 @@ const FinderSheet = ({
     >
       {/* sidebar */}
       <Sidebar
+        windowId={windowId}
         section={section}
         folder={folder}
         status={status}
-        handleClose={handleClose}
-        handleMinimize={handleMinimize}
-        handleMaximize={handleMaximize}
-        handleChangeSection={handleChangeSection}
       />
 
       {/* content area */}
