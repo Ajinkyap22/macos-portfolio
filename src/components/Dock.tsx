@@ -14,7 +14,8 @@ import Finder from "@/icons/finder.png";
 import LaunchPad from "@/icons/launchpad.png";
 
 const Dock = () => {
-  const { openWindow, isAnyWindowMaximized } = useContext(FinderContext);
+  const { openWindow, isAnyWindowMaximized, windows } =
+    useContext(FinderContext);
 
   const handleFinderClick = () => {
     openWindow("Desktop", "Desktop");
@@ -26,7 +27,12 @@ const Dock = () => {
         data-show={!isAnyWindowMaximized}
         className="flex h-[70px] items-center justify-center gap-x-4 rounded-2xl bg-dock px-3 transition-transform duration-300 group-hover:translate-y-0 data-[show='false']:translate-y-full data-[show='false']:bg-dock-dark"
       >
-        <Skill name="Finder" icon={Finder} onClick={handleFinderClick} />
+        <Skill
+          name="Finder"
+          icon={Finder}
+          onClick={handleFinderClick}
+          open={!!windows.length}
+        />
 
         <Skill name="Launchpad" icon={LaunchPad} />
 
@@ -41,15 +47,22 @@ const Dock = () => {
 const Skill = ({
   name,
   icon,
+  open = false,
   onClick,
 }: {
   name: string;
   icon: string | StaticImageData;
+  open?: boolean;
   onClick?: () => void;
 }) => {
   return (
     <>
-      <div className="relative" data-tooltip-id={name} onClick={onClick}>
+      <div
+        data-open={open}
+        className="data-[open='true']:open relative"
+        data-tooltip-id={name}
+        onClick={onClick}
+      >
         <Image src={icon} alt={name} width={45} height={45} />
       </div>
 
