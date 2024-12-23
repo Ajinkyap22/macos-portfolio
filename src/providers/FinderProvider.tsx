@@ -22,26 +22,9 @@ export type Window = {
   section: string;
   folder: FolderType;
   status: WindowStatus;
+  history: { section: string; folder: FolderType }[];
+  currentIndex: number;
 };
-
-/*
-Cases:
-Open:
-- If a window with the same section and folder is open: if status is minimized, change status to normal. If status is normal, do nothing.
-- If a window with the same section and folder is not open: open a new window with the section and folder.
-
-Close:
-- Use id to close window. Because if 2 windows have the same section and folder, we need to close the correct one.
-
-Minimize:
-- Use id to minimize window.
-
-Maximize:
-- Use id to maximize window.
-
-Change Section:
-- Use id to change section.
-*/
 
 type Action =
   | {
@@ -73,7 +56,9 @@ type Action =
         section: string;
         folder: FolderType;
       };
-    };
+    }
+  | { type: "NAVIGATE_BACK"; payload: { id: string } }
+  | { type: "NAVIGATE_FORWARD"; payload: { id: string } };
 
 const windowReducer = (state: Window[], action: Action) => {
   switch (action.type) {
@@ -105,10 +90,14 @@ const windowReducer = (state: Window[], action: Action) => {
           section,
           folder,
           status: WindowStatus.Normal,
+          history: [{ section, folder }],
+          currentIndex: 0,
         },
       ];
+
     case "CLOSE_WINDOW":
       return state.filter((window) => window.id !== action.payload.id);
+
     case "MINIMIZE_WINDOW":
       return state.map((window) => {
         if (window.id === action.payload.id) {
@@ -120,6 +109,7 @@ const windowReducer = (state: Window[], action: Action) => {
 
         return window;
       });
+
     case "MAXIMIZE_WINDOW":
       return state.map((window) => {
         if (window.id === action.payload.id) {
@@ -134,18 +124,61 @@ const windowReducer = (state: Window[], action: Action) => {
 
         return window;
       });
+
     case "CHANGE_SECTION":
       return state.map((window) => {
         if (window.id === action.payload.id) {
+          const newHistory = window.history.slice(0, window.currentIndex + 1);
+          newHistory.push({
+            section: action.payload.section,
+            folder: action.payload.folder,
+          });
+
           return {
             ...window,
             section: action.payload.section,
             folder: action.payload.folder,
+            history: newHistory,
+            currentIndex: newHistory.length - 1,
           };
         }
 
         return window;
       });
+
+    case "NAVIGATE_BACK":
+      return state.map((window) => {
+        if (window.id === action.payload.id && window.currentIndex > 0) {
+          const prevState = window.history[window.currentIndex - 1];
+
+          return {
+            ...window,
+            section: prevState.section,
+            folder: prevState.folder,
+            currentIndex: window.currentIndex - 1,
+          };
+        }
+        return window;
+      });
+
+    case "NAVIGATE_FORWARD":
+      return state.map((window) => {
+        if (
+          window.id === action.payload.id &&
+          window.currentIndex < window.history.length - 1
+        ) {
+          const nextState = window.history[window.currentIndex + 1];
+
+          return {
+            ...window,
+            section: nextState.section,
+            folder: nextState.folder,
+            currentIndex: window.currentIndex + 1,
+          };
+        }
+        return window;
+      });
+
     default:
       return state;
   }
@@ -159,6 +192,8 @@ export const FinderContext = createContext<{
   minimizeWindow: (id: string) => void;
   maximizeWindow: (id: string) => void;
   changeSection: (id: string, section: string, folder: FolderType) => void;
+  navigateBack: (id: string) => void;
+  navigateForward: (id: string) => void;
 }>({
   windows: [],
   isAnyWindowMaximized: false,
@@ -167,6 +202,8 @@ export const FinderContext = createContext<{
   minimizeWindow: () => {},
   maximizeWindow: () => {},
   changeSection: () => {},
+  navigateBack: () => {},
+  navigateForward: () => {},
 });
 
 type Props = {
@@ -201,6 +238,14 @@ const FinderProvider = ({ children }: Props) => {
     dispatch({ type: "CHANGE_SECTION", payload: { id, section, folder } });
   };
 
+  const navigateBack = (id: string) => {
+    dispatch({ type: "NAVIGATE_BACK", payload: { id } });
+  };
+
+  const navigateForward = (id: string) => {
+    dispatch({ type: "NAVIGATE_FORWARD", payload: { id } });
+  };
+
   return (
     <FinderContext.Provider
       value={{
@@ -211,6 +256,8 @@ const FinderProvider = ({ children }: Props) => {
         minimizeWindow,
         maximizeWindow,
         changeSection,
+        navigateBack,
+        navigateForward,
       }}
     >
       {children}
