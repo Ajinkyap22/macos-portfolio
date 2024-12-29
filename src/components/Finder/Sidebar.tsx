@@ -4,13 +4,11 @@ import React, { useContext } from "react";
 
 import Image from "next/image";
 
+import ActionButtons from "@/components/Finder/ActionButtons";
+
 import { FinderContext } from "@/providers/FinderProvider";
 
-import Close from "@/icons/close.svg";
 import Desktop from "@/icons/desktop.svg";
-import ExitMaximize from "@/icons/exit-maximize.svg";
-import Maximize from "@/icons/maximize.svg";
-import Minimize from "@/icons/minimize.svg";
 
 type Props = {
   status: "minimized" | "maximized" | "normal";
@@ -46,43 +44,12 @@ const Sidebar = ({ status, section, folder, windowId }: Props) => {
     >
       {/* header  */}
       <div className="p-5">
-        <div className="group flex items-center gap-x-2">
-          {/* close  */}
-          <button
-            onClick={handleClose}
-            className="flex h-3 w-3 items-center justify-center rounded-full border-[0.5px] border-stroke bg-close p-[1px]"
-          >
-            <Image
-              src={Close}
-              alt="Close"
-              className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            />
-          </button>
-
-          {/* minimize */}
-          <button
-            onClick={handleMinimize}
-            className="flex h-3 w-3 items-center justify-center rounded-full border-[0.5px] border-stroke bg-minimize"
-          >
-            <Image
-              src={Minimize}
-              alt="Minimize"
-              className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            />
-          </button>
-
-          {/* maximize */}
-          <button
-            onClick={handleMaximize}
-            className="flex h-3 w-3 items-center justify-center rounded-full border-[0.5px] border-stroke bg-maximize"
-          >
-            <Image
-              src={status === "maximized" ? ExitMaximize : Maximize}
-              alt="Maximize"
-              className="rotate-90 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            />
-          </button>
-        </div>
+        <ActionButtons
+          status={status}
+          handleClose={handleClose}
+          handleMinimize={handleMinimize}
+          handleMaximize={handleMaximize}
+        />
       </div>
 
       {/* sections */}

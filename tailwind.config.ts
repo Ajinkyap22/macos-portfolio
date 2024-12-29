@@ -26,6 +26,7 @@ export default {
         stroke: "#00000033",
         tertiary: "#00000040",
         focused: "#2962D9",
+        toolbar: "#f1f2f3cc",
       },
       boxShadow: {
         "all-around":
@@ -53,6 +54,9 @@ export default {
       },
       borderRadius: {
         regular: "10px",
+      },
+      fontFamily: {
+        menlo: ["var(--font-mono)"],
       },
     },
   },

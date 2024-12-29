@@ -24,7 +24,7 @@ const Folder = ({ name, top, right, left, variant, windowId }: Props) => {
 
   const handleOpen = () => {
     if (variant === "desktop") {
-      openWindow("Desktop", name);
+      openWindow("Desktop", name, "Finder");
     } else {
       changeSection(windowId!, "Desktop", name);
     }

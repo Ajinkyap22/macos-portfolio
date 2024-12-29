@@ -1,8 +1,12 @@
+"use client";
+
 import React, { useCallback } from "react";
 
 import Image from "next/image";
 
 import Desktop from "@/components/Finder/Folders/Desktop";
+import Projects from "@/components/Finder/Folders/Projects";
+import TextFile from "@/components/TextFile";
 
 import Back from "@/icons/back.svg";
 import Forward from "@/icons/forward.svg";
@@ -30,6 +34,18 @@ const Content = ({
     switch (folder) {
       case "Desktop":
         return <Desktop windowId={windowId} />;
+
+      case "About":
+        return <TextFile name="About" top={0} left={0} />;
+
+      case "Projects":
+        return <Projects />;
+
+      case "Education":
+        return <TextFile name="Education" top={0} left={0} />;
+
+      case "Experience":
+        return <TextFile name="Experience" top={0} left={0} />;
 
       default:
         return <Desktop windowId={windowId} />;

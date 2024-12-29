@@ -18,7 +18,7 @@ const Dock = () => {
     useContext(FinderContext);
 
   const handleFinderClick = () => {
-    openWindow("Desktop", "Desktop");
+    openWindow("Desktop", "Desktop", "Finder");
   };
 
   return (

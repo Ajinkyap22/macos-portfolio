@@ -1,0 +1,4 @@
+export const aboutData = `I've been fascinated by computers ever since I can remember. As a kid, I was sure I'd end up doing something with them—though back then, I thought “programming” was just typing really fast on a keyboard (spoiler: it's way cooler).
+    I learned basics of some programming languages in college, but didn't really learn how to actually "build" stuff. Then the pandemic hit, and that's when I became a "real programmer". With all the extra time, I dove headfirst into coding, learning languages from scratch and building projects like my life depended on it. After months of self-teaching, endless debugging (and a little imposter syndrome), I knew this was what I wanted to do.
+    I started out as a front-end developer, but picked up some back-end skills along the way as it was more fun to build end-to-end applications. I'm now a full-stack developer with a passion for creating beautiful, intuitive, and functional applications.
+`;

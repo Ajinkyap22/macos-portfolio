@@ -17,6 +17,8 @@ export enum WindowStatus {
   Normal = "normal",
 }
 
+type Type = "Finder" | "TextEditor";
+
 export type Window = {
   id: string;
   section: string;
@@ -24,12 +26,17 @@ export type Window = {
   status: WindowStatus;
   history: { section: string; folder: FolderType }[];
   currentIndex: number;
+  type: Type;
 };
 
 type Action =
   | {
       type: "OPEN_WINDOW";
-      payload: { section: string; folder: FolderType };
+      payload: {
+        section: string;
+        folder: FolderType;
+        type: Type;
+      };
     }
   | {
       type: "CLOSE_WINDOW";
@@ -66,7 +73,10 @@ const windowReducer = (state: Window[], action: Action) => {
       const { section, folder } = action.payload;
 
       const window = state.find(
-        (window) => window.section === section && window.folder === folder,
+        (window) =>
+          window.section === section &&
+          window.folder === folder &&
+          window.type === action.payload.type,
       );
 
       if (window) {
@@ -92,6 +102,7 @@ const windowReducer = (state: Window[], action: Action) => {
           status: WindowStatus.Normal,
           history: [{ section, folder }],
           currentIndex: 0,
+          type: action.payload.type,
         },
       ];
 
@@ -187,7 +198,7 @@ const windowReducer = (state: Window[], action: Action) => {
 export const FinderContext = createContext<{
   windows: Window[];
   isAnyWindowMaximized: boolean;
-  openWindow: (section: string, folder: FolderType) => void;
+  openWindow: (section: string, folder: FolderType, type: Type) => void;
   closeWindow: (id: string) => void;
   minimizeWindow: (id: string) => void;
   maximizeWindow: (id: string) => void;
@@ -218,8 +229,8 @@ const FinderProvider = ({ children }: Props) => {
     (window) => window.status === WindowStatus.Maximized,
   );
 
-  const openWindow = (section: string, folder: FolderType) => {
-    dispatch({ type: "OPEN_WINDOW", payload: { section, folder } });
+  const openWindow = (section: string, folder: FolderType, type: Type) => {
+    dispatch({ type: "OPEN_WINDOW", payload: { section, folder, type } });
   };
 
   const closeWindow = (id: string) => {
