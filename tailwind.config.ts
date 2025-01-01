@@ -10,8 +10,8 @@ export default {
     extend: {
       colors: {
         primary: "#007AFF",
-        alert: "#f6f6f6",
-        popover: "#f1f1f1",
+        alert: "#f6f6f6f2",
+        popover: "#E5E5E5",
         close: "#FF5F57",
         minimize: "#FEBC2E",
         maximize: "#28C840",
@@ -22,11 +22,13 @@ export default {
         dock: "#f6f6f65c",
         "dock-dark": "#4a4a4a63",
         selected: "#ffffff33",
-        ghost: "#00000004",
+        ghost: "#D8D8D8",
         stroke: "#00000033",
         tertiary: "#00000040",
         focused: "#2962D9",
         toolbar: "#f1f2f3cc",
+        active: "#63626212",
+        secondary: "#000000a6",
       },
       boxShadow: {
         "all-around":

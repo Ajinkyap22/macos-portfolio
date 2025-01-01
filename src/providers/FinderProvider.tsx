@@ -17,7 +17,7 @@ export enum WindowStatus {
   Normal = "normal",
 }
 
-type Type = "Finder" | "TextEditor";
+type Type = "Finder" | "TextEditor" | "Mail";
 
 export type Window = {
   id: string;

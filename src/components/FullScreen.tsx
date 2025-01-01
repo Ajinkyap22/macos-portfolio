@@ -40,9 +40,9 @@ const Fullscreen = () => {
         open={isOpen}
         onClose={() => setIsOpen(false)}
         transition
-        className="fixed inset-0 flex w-screen items-center justify-center bg-black/30 p-4 transition-opacity duration-200 data-[closed]:opacity-0"
+        className="fixed inset-0 z-10 flex w-screen items-center justify-center bg-black/30 p-4 transition-opacity duration-200 data-[closed]:opacity-0"
       >
-        <DialogPanel className="rounded-regular shadow-all-around flex max-h-[260px] max-w-[260px] flex-col items-center justify-center gap-y-4 bg-popover p-4">
+        <DialogPanel className="flex max-h-[260px] max-w-[260px] flex-col items-center justify-center gap-y-4 rounded-regular bg-popover p-4 shadow-all-around">
           <DialogTitle className="text-sm font-bold text-textPrimary">
             Enter Fullscreen
           </DialogTitle>

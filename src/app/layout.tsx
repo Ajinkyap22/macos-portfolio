@@ -8,6 +8,7 @@ import Menubar from "@/components/Menubar";
 
 import FinderProvider from "@/providers/FinderProvider";
 import FullscreenProvider from "@/providers/FullscreenProvider";
+import { ToastProvider } from "@/providers/ToastProvider";
 import WallpaperProvider from "@/providers/WallpaperProvider";
 
 const SFPro = localFont({
@@ -60,13 +61,15 @@ export default function RootLayout({
         <FinderProvider>
           <FullscreenProvider>
             <WallpaperProvider>
-              <div className="flex h-full flex-col">
-                <Menubar />
+              <ToastProvider>
+                <div className="flex h-full flex-col">
+                  <Menubar />
 
-                {children}
+                  {children}
 
-                <Dock />
-              </div>
+                  <Dock />
+                </div>
+              </ToastProvider>
             </WallpaperProvider>
           </FullscreenProvider>
         </FinderProvider>

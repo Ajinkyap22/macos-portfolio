@@ -4,13 +4,15 @@ import Image from "next/image";
 
 import ActionButtons from "@/components/Finder/ActionButtons";
 
+import Document from "@/icons/document.png";
+
+import { getStyles } from "@/utils/getStyles";
+
 import { aboutData } from "@/data/aboutData";
 import { educationData } from "@/data/educationData";
 import { experienceData } from "@/data/experienceData";
-import { FolderType, FinderContext } from "@/providers/FinderProvider";
-import { getStyles } from "@/utils/getStyles";
 
-import Document from "@/icons/document.png";
+import { FolderType, FinderContext } from "@/providers/FinderProvider";
 
 type Props = {
   folder: FolderType;

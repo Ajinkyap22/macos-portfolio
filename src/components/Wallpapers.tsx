@@ -6,10 +6,10 @@ import Image from "next/image";
 
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 
-import { wallpapersData } from "@/data/wallpapersData";
-
 import Tick from "@/icons/tick.svg";
 import Wallpaper from "@/icons/wallpaper.svg";
+
+import { wallpapersData } from "@/data/wallpapersData";
 
 const Wallpapers = () => {
   const [selectedWallpaper, setSelectedWallpaper] = useState(
@@ -46,7 +46,7 @@ const Wallpapers = () => {
       <PopoverPanel
         transition
         anchor="bottom"
-        className="z-50 !max-h-[75%] rounded-md bg-popover text-sm shadow-all-around transition duration-200 ease-in-out [--anchor-gap:8px] [--anchor-padding:40px] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+        className="z-50 !max-h-[75%] rounded-md bg-white text-sm shadow-all-around transition duration-200 ease-in-out [--anchor-gap:8px] [--anchor-padding:40px] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
       >
         <div className="grid flex-1 grid-cols-3 overflow-auto">
           {wallpapersData.map((wallpaper) => (

@@ -7,11 +7,13 @@ import type { StaticImageData } from "next/image";
 
 import Tooltip from "@/components/ui/Tooltip";
 
-import { skillsData } from "@/data/skillsData";
-import { FinderContext } from "@/providers/FinderProvider";
-
 import Finder from "@/icons/finder.png";
 import LaunchPad from "@/icons/launchpad.png";
+import Mail from "@/icons/mail.png";
+
+import { skillsData } from "@/data/skillsData";
+
+import { FinderContext } from "@/providers/FinderProvider";
 
 const Dock = () => {
   const { openWindow, isAnyWindowMaximized, windows } =
@@ -21,11 +23,15 @@ const Dock = () => {
     openWindow("Desktop", "Desktop", "Finder");
   };
 
+  const handleContactClick = () => {
+    openWindow("Desktop", "Desktop", "Mail");
+  };
+
   return (
     <div className="group fixed bottom-0 z-10 flex w-full justify-center">
       <div
         data-show={!isAnyWindowMaximized}
-        className="flex h-[70px] items-center justify-center gap-x-4 rounded-2xl bg-dock px-3 transition-transform duration-300 group-hover:translate-y-0 data-[show='false']:translate-y-full data-[show='false']:bg-dock-dark"
+        className="flex h-[70px] items-center justify-center gap-x-4 rounded-2xl bg-dock p-3 transition-transform duration-300 group-hover:translate-y-0 data-[show='false']:translate-y-full data-[show='false']:bg-dock-dark"
       >
         <Skill
           name="Finder"
@@ -39,6 +45,10 @@ const Dock = () => {
         {skillsData.map((skill) => (
           <Skill key={skill.id} name={skill.name} icon={skill.icon} />
         ))}
+
+        <div className="h-full w-0 border-l border-black" />
+
+        <Skill onClick={handleContactClick} name="Contact Me" icon={Mail} />
       </div>
     </div>
   );

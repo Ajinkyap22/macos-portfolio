@@ -42,6 +42,41 @@ const eslintConfig = [
               group: "internal",
               position: "after",
             },
+            {
+              pattern: "@/hooks/**",
+              group: "internal",
+              position: "after",
+            },
+            {
+              pattern: "@/lib/**",
+              group: "internal",
+              position: "after",
+            },
+            {
+              pattern: "@/utils/**",
+              group: "internal",
+              position: "after",
+            },
+            {
+              pattern: "@/types/**",
+              group: "internal",
+              position: "after",
+            },
+            {
+              pattern: "@/data/**",
+              group: "internal",
+              position: "after",
+            },
+            {
+              pattern: "@/hooks/**",
+              group: "internal",
+              position: "after",
+            },
+            {
+              pattern: "@/providers/**",
+              group: "internal",
+              position: "after",
+            },
           ],
           pathGroupsExcludedImportTypes: ["react"],
           "newlines-between": "always",

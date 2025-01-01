@@ -6,9 +6,9 @@ import Image from "next/image";
 
 import clsx from "clsx";
 
-import { FolderType, FinderContext } from "@/providers/FinderProvider";
-
 import FolderIcon from "@/icons/folder.svg";
+
+import { FolderType, FinderContext } from "@/providers/FinderProvider";
 
 type Props = {
   name: FolderType;
