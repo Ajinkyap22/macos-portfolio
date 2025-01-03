@@ -1,44 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 
+import { type DragEndEvent } from "@dnd-kit/core";
+
+import DndContext from "@/components/DnD/DndContext";
 import Folder from "@/components/Folder";
+
+import { innerFoldersData } from "@/data/foldersData";
+
+import { FolderType } from "@/providers/FinderProvider";
 
 type Props = {
   windowId: string;
 };
 
 const Desktop = ({ windowId }: Props) => {
-  return (
-    <>
-      <Folder
-        windowId={windowId}
-        variant="finder"
-        name="About"
-        top={0}
-        left={0}
-      />
+  const [folders, setFolders] = useState(innerFoldersData);
 
-      <Folder
-        windowId={windowId}
-        variant="finder"
-        name="Projects"
-        top={0}
-        left={100}
-      />
-      <Folder
-        windowId={windowId}
-        variant="finder"
-        name="Education"
-        top={0}
-        left={200}
-      />
-      <Folder
-        windowId={windowId}
-        variant="finder"
-        name="Experience"
-        top={0}
-        left={300}
-      />
-    </>
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, delta } = event;
+
+    if (!active?.id) return;
+
+    const data = active.data.current as {
+      position: { x: number; y: number };
+    };
+
+    const position = data.position;
+
+    const newPosition = {
+      x: position.x + (delta?.x || 0),
+      y: position.y + (delta?.y || 0),
+    };
+
+    setFolders((folders) =>
+      folders.map((folder) =>
+        folder.name === active.id
+          ? {
+              ...folder,
+              position: newPosition,
+            }
+          : folder,
+      ),
+    );
+  };
+
+  return (
+    <DndContext handleDragEnd={handleDragEnd}>
+      {folders.map((folder) => (
+        <Folder
+          key={folder.name}
+          windowId={windowId}
+          variant="finder"
+          name={folder.name as FolderType}
+          top={folder.position.y}
+          left={folder.position.x}
+        />
+      ))}
+    </DndContext>
   );
 };
 

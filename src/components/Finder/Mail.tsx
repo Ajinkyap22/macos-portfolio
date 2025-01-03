@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 
+import Draggable from "@/components/DnD/DraggableFinder";
 import ActionButtons from "@/components/Finder/ActionButtons";
 import EmailWarning from "@/components/Finder/EmailWarning";
 import IconButton from "@/components/ui/IconButton";
 
 import Send from "@/icons/send.svg";
-
-import { getStyles } from "@/utils/getStyles";
 
 import { FinderContext } from "@/providers/FinderProvider";
 import { useToast } from "@/providers/ToastProvider";
@@ -15,9 +14,10 @@ type Props = {
   status: "minimized" | "maximized" | "normal";
   offset: number;
   windowId: string;
+  position: { x: number; y: number };
 };
 
-const Mail = ({ status, offset, windowId }: Props) => {
+const Mail = ({ status, offset, windowId, position }: Props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -101,10 +101,12 @@ const Mail = ({ status, offset, windowId }: Props) => {
   };
 
   return (
-    <div
-      style={getStyles(status, offset)}
-      data-status={status}
-      className="relative z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around"
+    <Draggable
+      status={status}
+      windowId={windowId}
+      offset={offset}
+      position={position}
+      className="relative z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
     >
       <div className="flex items-center justify-between rounded-t-lg border-b bg-toolbar px-4 py-2">
         <ActionButtons
@@ -185,7 +187,7 @@ const Mail = ({ status, offset, windowId }: Props) => {
         handleClose={toggleOpen}
         handleSend={handleSend}
       />
-    </div>
+    </Draggable>
   );
 };
 

@@ -27,6 +27,7 @@ export type Window = {
   history: { section: string; folder: FolderType }[];
   currentIndex: number;
   type: Type;
+  position: { x: number; y: number };
 };
 
 type Action =
@@ -65,7 +66,11 @@ type Action =
       };
     }
   | { type: "NAVIGATE_BACK"; payload: { id: string } }
-  | { type: "NAVIGATE_FORWARD"; payload: { id: string } };
+  | { type: "NAVIGATE_FORWARD"; payload: { id: string } }
+  | {
+      type: "SET_POSITION";
+      payload: { id: string; position: { x: number; y: number } };
+    };
 
 const windowReducer = (state: Window[], action: Action) => {
   switch (action.type) {
@@ -103,6 +108,7 @@ const windowReducer = (state: Window[], action: Action) => {
           history: [{ section, folder }],
           currentIndex: 0,
           type: action.payload.type,
+          position: { x: 0, y: 0 },
         },
       ];
 
@@ -190,6 +196,18 @@ const windowReducer = (state: Window[], action: Action) => {
         return window;
       });
 
+    case "SET_POSITION":
+      return state.map((window) => {
+        if (window.id === action.payload.id) {
+          return {
+            ...window,
+            position: action.payload.position,
+          };
+        }
+
+        return window;
+      });
+
     default:
       return state;
   }
@@ -205,6 +223,7 @@ export const FinderContext = createContext<{
   changeSection: (id: string, section: string, folder: FolderType) => void;
   navigateBack: (id: string) => void;
   navigateForward: (id: string) => void;
+  setPosition: (id: string, position: { x: number; y: number }) => void;
 }>({
   windows: [],
   isAnyWindowMaximized: false,
@@ -215,6 +234,7 @@ export const FinderContext = createContext<{
   changeSection: () => {},
   navigateBack: () => {},
   navigateForward: () => {},
+  setPosition: () => {},
 });
 
 type Props = {
@@ -257,6 +277,10 @@ const FinderProvider = ({ children }: Props) => {
     dispatch({ type: "NAVIGATE_FORWARD", payload: { id } });
   };
 
+  const setPosition = (id: string, position: { x: number; y: number }) => {
+    dispatch({ type: "SET_POSITION", payload: { id, position } });
+  };
+
   return (
     <FinderContext.Provider
       value={{
@@ -269,6 +293,7 @@ const FinderProvider = ({ children }: Props) => {
         changeSection,
         navigateBack,
         navigateForward,
+        setPosition,
       }}
     >
       {children}

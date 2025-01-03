@@ -2,11 +2,10 @@ import React, { useContext, useMemo } from "react";
 
 import Image from "next/image";
 
+import Draggable from "@/components/DnD/DraggableFinder";
 import ActionButtons from "@/components/Finder/ActionButtons";
 
 import Document from "@/icons/document.png";
-
-import { getStyles } from "@/utils/getStyles";
 
 import { aboutData } from "@/data/aboutData";
 import { educationData } from "@/data/educationData";
@@ -19,9 +18,10 @@ type Props = {
   status: "minimized" | "maximized" | "normal";
   offset: number;
   windowId: string;
+  position: { x: number; y: number };
 };
 
-const TextEditor = ({ folder, status, offset, windowId }: Props) => {
+const TextEditor = ({ folder, status, offset, windowId, position }: Props) => {
   const { closeWindow, minimizeWindow, maximizeWindow } =
     useContext(FinderContext);
 
@@ -54,13 +54,15 @@ const TextEditor = ({ folder, status, offset, windowId }: Props) => {
   }, [folder]);
 
   return (
-    <div
-      style={getStyles(status, offset)}
-      data-status={status}
-      className="z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around"
+    <Draggable
+      offset={offset}
+      status={status}
+      windowId={windowId}
+      position={position}
+      className="z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
     >
       {/* toolbar */}
-      <div className="bg-toolbar flex items-center rounded-t-lg border-b p-1.5">
+      <div className="flex items-center rounded-t-lg border-b bg-toolbar p-1.5">
         <ActionButtons
           status={status}
           handleClose={handleClose}
@@ -78,7 +80,7 @@ const TextEditor = ({ folder, status, offset, windowId }: Props) => {
       </div>
 
       {/* editor */}
-      <div className="font-menlo flex-1 overflow-y-auto px-1.5 data-[status='normal']:rounded-r-lg">
+      <div className="flex-1 overflow-y-auto px-1.5 font-menlo data-[status='normal']:rounded-r-lg">
         {content.split("\n").map((line, i) => (
           <p
             contentEditable={true}
@@ -91,7 +93,7 @@ const TextEditor = ({ folder, status, offset, windowId }: Props) => {
           </p>
         ))}
       </div>
-    </div>
+    </Draggable>
   );
 };
 

@@ -6,9 +6,9 @@ import Image from "next/image";
 
 import ActionButtons from "@/components/Finder/ActionButtons";
 
-import { FinderContext } from "@/providers/FinderProvider";
-
 import Desktop from "@/icons/desktop.svg";
+
+import { FinderContext } from "@/providers/FinderProvider";
 
 type Props = {
   status: "minimized" | "maximized" | "normal";

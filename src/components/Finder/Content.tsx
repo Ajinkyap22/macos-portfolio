@@ -55,7 +55,7 @@ const Content = ({
   return (
     <div
       data-status={status}
-      className="h-full w-4/5 bg-white data-[status='normal']:rounded-r-lg"
+      className="flex h-full w-4/5 flex-col bg-white data-[status='normal']:rounded-r-lg"
     >
       {/* header */}
       <div className="flex items-center p-4 transition-shadow duration-300 hover:shadow">
@@ -85,7 +85,7 @@ const Content = ({
       </div>
 
       {/* content */}
-      <div className="relative m-2 h-full overflow-y-auto">
+      <div className="relative m-2 flex-1 overflow-y-auto">
         <RenderContent />
       </div>
     </div>

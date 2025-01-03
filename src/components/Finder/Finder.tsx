@@ -23,10 +23,11 @@ const Finder = () => {
             section={window.section}
             folder={window.folder}
             status={window.status}
-            offset={i * 40}
+            offset={i * 60}
             history={window.history}
             currentIndex={window.currentIndex}
             windowId={window.id}
+            position={window.position}
             handleBack={() => navigateBack(window.id)}
             handleForward={() => navigateForward(window.id)}
           />
@@ -40,6 +41,7 @@ const Finder = () => {
             status={window.status}
             offset={i * 40}
             windowId={window.id}
+            position={window.position}
           />
         );
 
@@ -50,6 +52,7 @@ const Finder = () => {
             status={window.status}
             offset={i * 40}
             windowId={window.id}
+            position={window.position}
           />
         );
     }

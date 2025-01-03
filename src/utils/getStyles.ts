@@ -12,9 +12,6 @@ const normalStyles: CSSProperties = {
   position: "absolute",
   width: "50%",
   height: "50%",
-  top: "45%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
 };
 
 const minimizedStyles: CSSProperties = {
@@ -28,17 +25,24 @@ const minimizedStyles: CSSProperties = {
 export const getStyles = (
   status: "minimized" | "maximized" | "normal",
   offset: number = 0,
+  styles?: {
+    transform?: string;
+    touchAction: string;
+  },
 ) => {
   switch (status) {
     case "maximized":
       return maximizedStyles;
+
     case "minimized":
       return minimizedStyles;
+
     default:
       return {
         ...normalStyles,
-        top: `calc(50% + ${offset}px)`,
-        left: `calc(50% + ${offset}px)`,
+        ...styles,
+        marginLeft: offset,
+        marginTop: offset,
       };
   }
 };

@@ -1,10 +1,10 @@
 import React from "react";
 
+import Draggable from "@/components/DnD/DraggableFinder";
 import Content from "@/components/Finder/Content";
 import Sidebar from "@/components/Finder/Sidebar";
 
 import { FolderType } from "@/providers/FinderProvider";
-import { getStyles } from "@/utils/getStyles";
 
 type Props = {
   section: string;
@@ -14,6 +14,7 @@ type Props = {
   history: { section: string; folder: FolderType }[];
   currentIndex: number;
   windowId: string;
+  position: { x: number; y: number };
   handleBack: () => void;
   handleForward: () => void;
 };
@@ -26,14 +27,17 @@ const FinderSheet = ({
   history,
   currentIndex,
   windowId,
+  position,
   handleBack,
   handleForward,
 }: Props) => {
   return (
-    <div
-      style={getStyles(status, offset)}
-      data-status={status}
-      className="z-10 flex transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around"
+    <Draggable
+      status={status}
+      offset={offset}
+      windowId={windowId}
+      position={position}
+      className="z-10 flex cursor-default transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
     >
       {/* sidebar */}
       <Sidebar
@@ -53,7 +57,7 @@ const FinderSheet = ({
         handleBack={handleBack}
         handleForward={handleForward}
       />
-    </div>
+    </Draggable>
   );
 };
 
