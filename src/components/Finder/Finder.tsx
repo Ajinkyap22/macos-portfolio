@@ -12,9 +12,14 @@ import type { Window } from "@/providers/FinderProvider";
 const Finder = () => {
   const { windows, navigateBack, navigateForward } = useContext(FinderContext);
 
+  const visibleWindows = windows.filter((window) => window.status === "normal");
+
   if (!windows.length) return null;
 
-  const RenderWindow = (window: Window, i: number) => {
+  const RenderWindow = (window: Window) => {
+    // find index of window in visible windows
+    const i = visibleWindows.findIndex((w) => w.id === window.id);
+
     switch (window.type) {
       case "Finder":
         return (
@@ -58,7 +63,7 @@ const Finder = () => {
     }
   };
 
-  return windows.map((window, i) => RenderWindow(window, i));
+  return windows.map((window) => RenderWindow(window));
 };
 
 export default Finder;

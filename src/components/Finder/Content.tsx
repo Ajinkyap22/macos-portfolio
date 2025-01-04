@@ -17,8 +17,8 @@ type Props = {
   history: { section: string; folder: string }[];
   currentIndex: number;
   windowId: string;
-  handleBack: () => void;
-  handleForward: () => void;
+  handleBack?: () => void;
+  handleForward?: () => void;
 };
 
 const Content = ({

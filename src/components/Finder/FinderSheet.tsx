@@ -14,9 +14,11 @@ type Props = {
   history: { section: string; folder: FolderType }[];
   currentIndex: number;
   windowId: string;
+  scaledDown?: boolean;
   position: { x: number; y: number };
-  handleBack: () => void;
-  handleForward: () => void;
+  handleBack?: () => void;
+  handleForward?: () => void;
+  changeStatus?: () => void;
 };
 
 const FinderSheet = ({
@@ -28,16 +30,26 @@ const FinderSheet = ({
   currentIndex,
   windowId,
   position,
+  scaledDown,
   handleBack,
   handleForward,
+  changeStatus,
 }: Props) => {
+  const handleChangeStatus = () => {
+    if (!scaledDown || !changeStatus) return;
+
+    changeStatus();
+  };
+
   return (
     <Draggable
       status={status}
       offset={offset}
       windowId={windowId}
       position={position}
-      className="z-10 flex cursor-default transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      scaledDown={scaledDown}
+      className="data-[scaled-down='true']:scaled-down z-10 flex cursor-default transition-all duration-300 ease-out data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      handleChangeStatus={handleChangeStatus}
     >
       {/* sidebar */}
       <Sidebar

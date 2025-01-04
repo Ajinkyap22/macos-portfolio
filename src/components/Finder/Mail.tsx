@@ -15,9 +15,10 @@ type Props = {
   offset: number;
   windowId: string;
   position: { x: number; y: number };
+  scaledDown?: boolean;
 };
 
-const Mail = ({ status, offset, windowId, position }: Props) => {
+const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -28,7 +29,7 @@ const Mail = ({ status, offset, windowId, position }: Props) => {
 
   const disabled = !email || !message;
 
-  const { closeWindow, minimizeWindow, maximizeWindow } =
+  const { closeWindow, minimizeWindow, maximizeWindow, openWindow } =
     useContext(FinderContext);
 
   const handleClose = () => {
@@ -41,6 +42,12 @@ const Mail = ({ status, offset, windowId, position }: Props) => {
 
   const handleMaximize = () => {
     maximizeWindow(windowId);
+  };
+
+  const handleChangeStatus = () => {
+    if (!scaledDown) return;
+
+    openWindow("Desktop", "Desktop", "Mail");
   };
 
   const handleMailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +113,9 @@ const Mail = ({ status, offset, windowId, position }: Props) => {
       windowId={windowId}
       offset={offset}
       position={position}
-      className="relative z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      scaledDown={scaledDown}
+      className="data-[scaled-down='true']:scaled-down relative z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      handleChangeStatus={handleChangeStatus}
     >
       <div className="flex items-center justify-between rounded-t-lg border-b bg-toolbar px-4 py-2">
         <ActionButtons

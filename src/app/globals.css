@@ -16,6 +16,17 @@
     height: 4px;
     background-image: url("/indicator-dot.svg");
   }
+
+  .scaled-down {
+    zoom: 0.25;
+    width: 20vw;
+    height: 20vh;
+  }
+
+  .scaled-down > * {
+    zoom: 0.25;
+    pointer-events: none;
+  }
 }
 
 html,

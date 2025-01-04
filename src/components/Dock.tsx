@@ -5,6 +5,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 
+import MinimizedWindow from "@/components/MinimizedWindow";
 import Tooltip from "@/components/ui/Tooltip";
 
 import Finder from "@/icons/finder.png";
@@ -19,6 +20,10 @@ const Dock = () => {
   const { openWindow, isAnyWindowMaximized, windows } =
     useContext(FinderContext);
 
+  const minimizedWindows = windows.filter(
+    (window) => window.status === "minimized",
+  );
+
   const handleFinderClick = () => {
     openWindow("Desktop", "Desktop", "Finder");
   };
@@ -31,7 +36,7 @@ const Dock = () => {
     <div className="group fixed bottom-0 z-10 flex w-full justify-center">
       <div
         data-show={!isAnyWindowMaximized}
-        className="flex h-[70px] items-center justify-center gap-x-4 rounded-2xl bg-dock p-3 transition-transform duration-300 group-hover:translate-y-0 data-[show='false']:translate-y-full data-[show='false']:bg-dock-dark"
+        className="flex h-[70px] max-w-[90%] items-center justify-center gap-x-4 rounded-2xl bg-dock p-3 transition-transform duration-300 group-hover:translate-y-0 data-[show='false']:translate-y-full data-[show='false']:bg-dock-dark"
       >
         <Skill
           name="Finder"
@@ -49,6 +54,10 @@ const Dock = () => {
         <div className="h-full w-0 border-l border-black" />
 
         <Skill onClick={handleContactClick} name="Contact Me" icon={Mail} />
+
+        {minimizedWindows.map((window) => (
+          <MinimizedWindow key={window.id} window={window} />
+        ))}
       </div>
     </div>
   );
