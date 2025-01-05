@@ -4,10 +4,10 @@ import React, { useContext } from "react";
 
 import Image from "next/image";
 
-import { FullscreenContext } from "@/providers/FullscreenProvider";
-
 import FullscreenExit from "@/icons/fullscreen-exit.svg";
 import Fullscreen from "@/icons/fullscreen.svg";
+
+import { FullscreenContext } from "@/providers/FullscreenProvider";
 
 const FullscreenToggle = () => {
   const { isFullscreen, enterFullscreen, exitFullscreen } =
@@ -24,12 +24,12 @@ const FullscreenToggle = () => {
   return (
     <button
       onClick={toggleFullscreen}
-      className="hover:bg-selected rounded px-2 py-1"
+      className="shrink-0 rounded hover:bg-selected sm:px-2 sm:py-1"
     >
       <Image
         src={isFullscreen ? FullscreenExit : Fullscreen}
         alt="Fullscreen"
-        className="h-4.5 w-4.5 p-[1px]"
+        className="h-4 w-4 p-[1px] sm:h-4.5 sm:w-4.5"
       />
     </button>
   );

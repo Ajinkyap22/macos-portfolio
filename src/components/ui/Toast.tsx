@@ -37,7 +37,7 @@ export const Toast: React.FC<ToastProps> = ({
   return (
     <Dialog
       as="div"
-      className="min-w-xs pointer-events-none fixed inset-0 z-20 flex items-end justify-center px-4 py-6 transition-opacity duration-200 data-[closed]:opacity-0 sm:items-start sm:justify-end"
+      className="min-w-xs pointer-events-none fixed inset-0 z-50 flex items-end justify-center px-4 py-6 transition-opacity duration-200 data-[closed]:opacity-0 sm:items-start sm:justify-end"
       open={isOpen}
       transition
       onClose={onClose}

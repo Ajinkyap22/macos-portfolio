@@ -114,10 +114,10 @@ const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
       offset={offset}
       position={position}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down relative z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      className="data-[scaled-down='true']:scaled-down relative z-30 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
     >
-      <div className="flex items-center justify-between rounded-t-lg border-b bg-toolbar px-4 py-2">
+      <div className="flex items-center justify-between rounded-t-lg border-b bg-toolbar px-4 sm:py-2">
         <ActionButtons
           status={status}
           handleClose={handleClose}
@@ -134,7 +134,7 @@ const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
         />
       </div>
 
-      <div className="flex flex-1 flex-col overflow-y-auto text-regular data-[status='normal']:rounded-r-lg">
+      <div className="flex flex-1 flex-col text-regular data-[status='normal']:rounded-r-lg">
         {/* from (mail) */}
         <div className="ml-5 flex items-center gap-x-2 border-b">
           <label htmlFor="email" className="text-secondary">

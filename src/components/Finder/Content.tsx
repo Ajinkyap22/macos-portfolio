@@ -39,7 +39,7 @@ const Content = ({
         return <TextFile name="About" top={0} left={0} />;
 
       case "Projects":
-        return <Projects />;
+        return <Projects isMaximized={status === "maximized"} />;
 
       case "Education":
         return <TextFile name="Education" top={0} left={0} />;
@@ -50,12 +50,12 @@ const Content = ({
       default:
         return <Desktop windowId={windowId} />;
     }
-  }, [folder, windowId]);
+  }, [folder, windowId, status]);
 
   return (
     <div
       data-status={status}
-      className="flex h-full w-4/5 flex-col bg-white data-[status='normal']:rounded-r-lg"
+      className="flex h-full w-3/4 flex-col bg-white data-[status='normal']:rounded-r-lg sm:w-4/5"
     >
       {/* header */}
       <div className="flex items-center p-4 transition-shadow duration-300 hover:shadow">
@@ -63,7 +63,7 @@ const Content = ({
           <div className="flex items-center gap-x-4">
             <button
               disabled={currentIndex <= 0}
-              className="h-4 w-4 disabled:opacity-50"
+              className="h-3 w-3 disabled:opacity-50 sm:h-4 sm:w-4"
               onClick={handleBack}
             >
               <Image src={Back} alt="Back" />
@@ -71,14 +71,14 @@ const Content = ({
 
             <button
               disabled={currentIndex >= history.length - 1}
-              className="h-4 w-4 disabled:opacity-50"
+              className="h-3 w-3 disabled:opacity-50 sm:h-4 sm:w-4"
               onClick={handleForward}
             >
               <Image src={Forward} alt="Forward" />
             </button>
           </div>
 
-          <span className="text-emphasized font-semibold text-textPrimary">
+          <span className="text-regular font-semibold text-textPrimary sm:text-emphasized">
             {folder}
           </span>
         </div>

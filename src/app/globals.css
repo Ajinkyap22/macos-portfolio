@@ -20,12 +20,44 @@
   .scaled-down {
     zoom: 0.25;
     width: 20vw;
-    height: 20vh;
+    height: 65%;
+  }
+
+  @media (max-width: 1024px) {
+    .scaled-down {
+      height: 7vh;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .scaled-down {
+      width: 225px;
+    }
   }
 
   .scaled-down > * {
     zoom: 0.25;
     pointer-events: none;
+  }
+
+  .zoom-50 {
+    zoom: 0.5;
+  }
+
+  .zoom-60 {
+    zoom: 0.6;
+  }
+
+  .zoom-70 {
+    zoom: 0.7;
+  }
+
+  .zoom-80 {
+    zoom: 0.8;
+  }
+
+  .zoom-100 {
+    zoom: 1;
   }
 }
 

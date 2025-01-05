@@ -29,13 +29,18 @@ export const getStyles = (
     transform?: string;
     touchAction: string;
   },
+  isMobile?: boolean,
 ) => {
   switch (status) {
     case "maximized":
       return maximizedStyles;
 
     case "minimized":
-      return minimizedStyles;
+      return {
+        ...minimizedStyles,
+        left: isMobile ? 0 : "auto",
+        right: isMobile ? "auto" : 0,
+      };
 
     default:
       return {
@@ -43,6 +48,8 @@ export const getStyles = (
         ...styles,
         marginLeft: offset,
         marginTop: offset,
+        width: isMobile ? "75%" : normalStyles.width,
+        height: isMobile ? "40%" : normalStyles.height,
       };
   }
 };

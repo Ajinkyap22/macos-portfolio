@@ -74,7 +74,7 @@ const TextEditor = ({
       windowId={windowId}
       position={position}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down z-10 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      className="data-[scaled-down='true']:scaled-down z-30 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
     >
       {/* toolbar */}

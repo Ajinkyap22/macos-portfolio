@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useDraggable } from "@/hooks/useDraggable";
+import useIsMobile from "@/hooks/useIsMobile";
 
 import { getStyles } from "@/utils/getStyles";
 
@@ -33,9 +34,13 @@ const DraggableFinder = ({
     },
   );
 
+  const isMobile = useIsMobile(1024);
+
   return (
     <div
-      style={scaledDown ? undefined : getStyles(status, offset, style)}
+      style={
+        scaledDown ? undefined : getStyles(status, offset, style, isMobile)
+      }
       {...listeners}
       {...attributes}
       data-status={status}

@@ -21,11 +21,11 @@ const ActionButtons = ({
   handleMaximize,
 }: Props) => {
   return (
-    <div className="group z-10 flex items-center gap-x-2">
+    <div className="group relative z-10 flex items-center gap-x-2">
       {/* close  */}
       <button
         onClick={handleClose}
-        className="flex h-3 w-3 items-center justify-center rounded-full border-[0.5px] border-stroke bg-close p-[1px]"
+        className="flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full border-[0.5px] border-stroke bg-close p-[1px] sm:h-3 sm:w-3"
       >
         <Image
           src={Close}
@@ -37,7 +37,7 @@ const ActionButtons = ({
       {/* minimize */}
       <button
         onClick={handleMinimize}
-        className="flex h-3 w-3 items-center justify-center rounded-full border-[0.5px] border-stroke bg-minimize"
+        className="flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full border-[0.5px] border-stroke bg-minimize sm:h-3 sm:w-3"
       >
         <Image
           src={Minimize}
@@ -49,7 +49,7 @@ const ActionButtons = ({
       {/* maximize */}
       <button
         onClick={handleMaximize}
-        className="flex h-3 w-3 items-center justify-center rounded-full border-[0.5px] border-stroke bg-maximize"
+        className="flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full border-[0.5px] border-stroke bg-maximize sm:h-3 sm:w-3"
       >
         <Image
           src={status === "maximized" ? ExitMaximize : Maximize}

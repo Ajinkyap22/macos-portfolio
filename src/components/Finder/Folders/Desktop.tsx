@@ -5,6 +5,8 @@ import { type DragEndEvent } from "@dnd-kit/core";
 import DndContext from "@/components/DnD/DndContext";
 import Folder from "@/components/Folder";
 
+import useIsMobile from "@/hooks/useIsMobile";
+
 import { innerFoldersData } from "@/data/foldersData";
 
 import { FolderType } from "@/providers/FinderProvider";
@@ -15,6 +17,7 @@ type Props = {
 
 const Desktop = ({ windowId }: Props) => {
   const [folders, setFolders] = useState(innerFoldersData);
+  const isMobile = useIsMobile();
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, delta } = event;
@@ -46,14 +49,18 @@ const Desktop = ({ windowId }: Props) => {
 
   return (
     <DndContext handleDragEnd={handleDragEnd}>
-      {folders.map((folder) => (
+      {folders.map((folder, i) => (
         <Folder
           key={folder.name}
           windowId={windowId}
           variant="finder"
           name={folder.name as FolderType}
           top={folder.position.y}
-          left={folder.position.x}
+          left={
+            isMobile
+              ? Math.min(folder.position.x, folder.position.x - 30 * i)
+              : folder.position.x
+          }
         />
       ))}
     </DndContext>

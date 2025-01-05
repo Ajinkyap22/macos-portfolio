@@ -32,7 +32,7 @@ const LiveDate = () => {
   }, []);
 
   return (
-    <span className="text-regular pl-2 pr-3 font-semibold text-white">
+    <span className="shrink-0 text-regular font-semibold text-white sm:pl-2 sm:pr-3">
       {date}
     </span>
   );

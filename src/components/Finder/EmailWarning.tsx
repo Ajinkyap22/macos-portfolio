@@ -29,7 +29,7 @@ const EmailWarning = ({ email, isOpen, handleClose, handleSend }: Props) => {
         open={isOpen}
         onClose={handleClose}
         transition
-        className="fixed inset-0 z-10 flex w-screen items-center justify-center bg-black/30 p-4 transition-opacity duration-200 data-[closed]:opacity-0"
+        className="fixed inset-0 z-40 flex w-screen items-center justify-center bg-black/30 p-4 transition-opacity duration-200 data-[closed]:opacity-0"
       >
         <DialogPanel className="flex max-h-[260px] max-w-[260px] flex-col items-center justify-center gap-y-5 rounded-regular bg-popover p-4 shadow-all-around">
           <Image src={Email} alt="Email" width={50} height={50} />

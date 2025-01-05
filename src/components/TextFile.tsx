@@ -52,16 +52,16 @@ const TextFile = ({ name, top, left }: Props) => {
       <DraggableFile
         id={name}
         position={position}
-        className="group absolute flex w-20 flex-col items-center gap-y-0.5 outline-none data-[dragging='true']:pointer-events-none"
+        className="group absolute flex flex-col items-center gap-y-0.5 outline-none data-[dragging='true']:pointer-events-none sm:w-20"
         handleOpen={handleOpen}
       >
         <Image
           src={TextEdit}
           alt="TextEdit"
-          className="h-[66px] w-[66px] rounded-md border-2 border-transparent p-0.5 group-hover:bg-sidebar group-focus:bg-sidebar"
+          className="zoom-70 sm:zoom-100 rounded-md border-2 border-transparent p-0.5 group-hover:bg-sidebar group-focus:bg-sidebar sm:h-[66px] sm:w-[66px]"
         />
 
-        <p className="rounded px-1 text-center text-regular tracking-tight text-textPrimary group-focus:bg-focused group-focus:font-semibold group-focus:text-white">
+        <p className="rounded px-1 text-center text-mini tracking-tight text-textPrimary group-focus:bg-focused group-focus:font-semibold group-focus:text-white sm:text-regular">
           {name}.txt
         </p>
       </DraggableFile>

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useDraggable } from "@/hooks/useDraggable";
+import useIsMobile from "@/hooks/useIsMobile";
 
 type Props = {
   id: string;
@@ -27,6 +28,8 @@ const DraggableFolder = ({
     },
   );
 
+  const isMobile = useIsMobile();
+
   return (
     <button
       style={style}
@@ -36,7 +39,8 @@ const DraggableFolder = ({
       data-dragging={isDragging}
       data-variant={variant}
       ref={setNodeRef}
-      onDoubleClick={handleOpen}
+      onDoubleClick={isMobile ? undefined : handleOpen}
+      onClick={isMobile ? handleOpen : undefined}
     >
       {children}
     </button>

@@ -44,7 +44,7 @@ const Folder = ({ name, top, left, variant, windowId }: Props) => {
         alt="Folder"
         data-variant={variant}
         className={clsx(
-          "h-[66px] w-[66px] rounded-md border-2 border-transparent p-0.5",
+          "zoom-70 md:zoom-80 lg:zoom-100 rounded-md border-2 border-transparent p-0.5 lg:h-[66px] lg:w-[66px]",
           {
             "group-hover:border-dock group-focus:border-dock":
               variant === "desktop",
@@ -56,7 +56,7 @@ const Folder = ({ name, top, left, variant, windowId }: Props) => {
 
       <p
         className={clsx(
-          "break-word rounded px-1 text-center text-regular group-focus:bg-focused",
+          "break-word rounded px-1 text-center text-mini group-focus:bg-focused sm:text-regular",
           variant === "desktop" && "bg-black/20 py-0.5 font-bold text-white",
           variant === "finder" &&
             "tracking-tight text-textPrimary group-focus:font-semibold group-focus:text-white",

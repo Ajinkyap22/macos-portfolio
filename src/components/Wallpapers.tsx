@@ -35,18 +35,18 @@ const Wallpapers = () => {
 
   return (
     <Popover className="relative flex items-center">
-      <PopoverButton className="rounded px-2 py-1 text-sm hover:bg-selected focus:outline-none">
+      <PopoverButton className="shrink-0 rounded text-sm hover:bg-selected focus:outline-none sm:px-2 sm:py-1">
         <Image
           src={Wallpaper}
           alt="Wallpapers"
-          className="h-4.5 w-4.5 p-[1px]"
+          className="h-4 w-4 p-[1px] sm:h-4.5 sm:w-4.5"
         />
       </PopoverButton>
 
       <PopoverPanel
         transition
         anchor="bottom"
-        className="z-50 !max-h-[75%] rounded-md bg-white text-sm shadow-all-around transition duration-200 ease-in-out [--anchor-gap:8px] [--anchor-padding:40px] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+        className="z-40 !max-h-[75%] rounded-md bg-white text-sm shadow-all-around transition duration-200 ease-in-out [--anchor-gap:8px] [--anchor-padding:40px] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
       >
         <div className="grid flex-1 grid-cols-3 overflow-auto">
           {wallpapersData.map((wallpaper) => (

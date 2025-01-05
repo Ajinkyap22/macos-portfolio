@@ -7,12 +7,11 @@ import { type DragEndEvent } from "@dnd-kit/core";
 import DndContext from "@/components/DnD/DndContext";
 import Finder from "@/components/Finder/Finder";
 import Folder from "@/components/Folder";
+// import Fullscreen from "@/components/FullScreen";
 
 import { foldersData } from "@/data/foldersData";
 
 import { FinderContext, type FolderType } from "@/providers/FinderProvider";
-
-// import Fullscreen from "@/components/FullScreen";
 
 export default function Home() {
   const [folders, setFolders] = useState(foldersData);
@@ -54,7 +53,7 @@ export default function Home() {
 
   return (
     <DndContext handleDragEnd={handleDragEnd}>
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+      <div className="relative z-20 flex flex-1 items-center justify-center overflow-hidden">
         <div className="flex h-full w-full items-start justify-end">
           {folders.map((folder) => (
             <Folder

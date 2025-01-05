@@ -48,7 +48,7 @@ const FinderSheet = ({
       windowId={windowId}
       position={position}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down z-10 flex cursor-default transition-all duration-300 ease-out data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      className="data-[scaled-down='true']:scaled-down z-30 flex cursor-default transition-all duration-300 ease-out data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
     >
       {/* sidebar */}
