@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Draggable from "@/components/DnD/DraggableFinder";
 import Content from "@/components/Finder/Content";
 import Sidebar from "@/components/Finder/Sidebar";
 
-import { FolderType } from "@/providers/FinderProvider";
+import { FinderContext, FolderType } from "@/providers/FinderProvider";
 
 type Props = {
   section: string;
@@ -14,11 +14,9 @@ type Props = {
   history: { section: string; folder: FolderType }[];
   currentIndex: number;
   windowId: string;
-  scaledDown?: boolean;
   position: { x: number; y: number };
-  handleBack?: () => void;
-  handleForward?: () => void;
-  changeStatus?: () => void;
+  zIndex: number;
+  scaledDown?: boolean;
 };
 
 const FinderSheet = ({
@@ -30,15 +28,28 @@ const FinderSheet = ({
   currentIndex,
   windowId,
   position,
+  zIndex,
   scaledDown,
-  handleBack,
-  handleForward,
-  changeStatus,
 }: Props) => {
-  const handleChangeStatus = () => {
-    if (!scaledDown || !changeStatus) return;
+  const { navigateBack, navigateForward, focusWindow, openWindow } =
+    useContext(FinderContext);
 
-    changeStatus();
+  const handleChangeStatus = () => {
+    if (!scaledDown) return;
+
+    openWindow(section, folder, "Finder");
+  };
+
+  const handleBack = () => {
+    navigateBack(windowId);
+  };
+
+  const handleForward = () => {
+    navigateForward(windowId);
+  };
+
+  const handleFocus = () => {
+    focusWindow(windowId);
   };
 
   return (
@@ -48,8 +59,10 @@ const FinderSheet = ({
       windowId={windowId}
       position={position}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down z-30 flex cursor-default transition-all duration-300 ease-out data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      zIndex={zIndex}
+      className="data-[scaled-down='true']:scaled-down flex cursor-default transition-all duration-300 ease-out data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
+      handleFocus={handleFocus}
     >
       {/* sidebar */}
       <Sidebar

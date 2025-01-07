@@ -19,6 +19,7 @@ type Props = {
   offset: number;
   windowId: string;
   position: { x: number; y: number };
+  zIndex: number;
   scaledDown?: boolean;
 };
 
@@ -28,10 +29,16 @@ const TextEditor = ({
   offset,
   windowId,
   position,
+  zIndex,
   scaledDown,
 }: Props) => {
-  const { closeWindow, minimizeWindow, maximizeWindow, openWindow } =
-    useContext(FinderContext);
+  const {
+    closeWindow,
+    minimizeWindow,
+    maximizeWindow,
+    openWindow,
+    focusWindow,
+  } = useContext(FinderContext);
 
   const handleClose = () => {
     closeWindow(windowId);
@@ -49,6 +56,10 @@ const TextEditor = ({
     if (!scaledDown) return;
 
     openWindow("Desktop", folder, "TextEditor");
+  };
+
+  const handleFocus = () => {
+    focusWindow(windowId);
   };
 
   const content = useMemo(() => {
@@ -74,8 +85,10 @@ const TextEditor = ({
       windowId={windowId}
       position={position}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down z-30 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      zIndex={zIndex}
+      className="data-[scaled-down='true']:scaled-down flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
+      handleFocus={handleFocus}
     >
       {/* toolbar */}
       <div className="flex items-center rounded-t-lg border-b bg-toolbar p-1.5">

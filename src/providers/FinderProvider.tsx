@@ -28,6 +28,7 @@ export type Window = {
   currentIndex: number;
   type: Type;
   position: { x: number; y: number };
+  zIndex: number;
 };
 
 type Action =
@@ -70,11 +71,12 @@ type Action =
   | {
       type: "SET_POSITION";
       payload: { id: string; position: { x: number; y: number } };
-    };
+    }
+  | { type: "FOCUS_WINDOW"; payload: { id: string } };
 
 const windowReducer = (state: Window[], action: Action) => {
   switch (action.type) {
-    case "OPEN_WINDOW":
+    case "OPEN_WINDOW": {
       const { section, folder } = action.payload;
 
       const window = state.find(
@@ -98,6 +100,8 @@ const windowReducer = (state: Window[], action: Action) => {
         return state;
       }
 
+      const maxZIndex = Math.max(29, ...state.map((win) => win.zIndex));
+
       return [
         ...state,
         {
@@ -109,13 +113,16 @@ const windowReducer = (state: Window[], action: Action) => {
           currentIndex: 0,
           type: action.payload.type,
           position: { x: 0, y: 0 },
+          zIndex: maxZIndex + 1,
         },
       ];
+    }
 
-    case "CLOSE_WINDOW":
+    case "CLOSE_WINDOW": {
       return state.filter((window) => window.id !== action.payload.id);
+    }
 
-    case "MINIMIZE_WINDOW":
+    case "MINIMIZE_WINDOW": {
       return state.map((window) => {
         if (window.id === action.payload.id) {
           return {
@@ -126,8 +133,9 @@ const windowReducer = (state: Window[], action: Action) => {
 
         return window;
       });
+    }
 
-    case "MAXIMIZE_WINDOW":
+    case "MAXIMIZE_WINDOW": {
       return state.map((window) => {
         if (window.id === action.payload.id) {
           return {
@@ -141,8 +149,9 @@ const windowReducer = (state: Window[], action: Action) => {
 
         return window;
       });
+    }
 
-    case "CHANGE_SECTION":
+    case "CHANGE_SECTION": {
       return state.map((window) => {
         if (window.id === action.payload.id) {
           const newHistory = window.history.slice(0, window.currentIndex + 1);
@@ -162,8 +171,9 @@ const windowReducer = (state: Window[], action: Action) => {
 
         return window;
       });
+    }
 
-    case "NAVIGATE_BACK":
+    case "NAVIGATE_BACK": {
       return state.map((window) => {
         if (window.id === action.payload.id && window.currentIndex > 0) {
           const prevState = window.history[window.currentIndex - 1];
@@ -177,8 +187,9 @@ const windowReducer = (state: Window[], action: Action) => {
         }
         return window;
       });
+    }
 
-    case "NAVIGATE_FORWARD":
+    case "NAVIGATE_FORWARD": {
       return state.map((window) => {
         if (
           window.id === action.payload.id &&
@@ -195,8 +206,9 @@ const windowReducer = (state: Window[], action: Action) => {
         }
         return window;
       });
+    }
 
-    case "SET_POSITION":
+    case "SET_POSITION": {
       return state.map((window) => {
         if (window.id === action.payload.id) {
           return {
@@ -207,9 +219,19 @@ const windowReducer = (state: Window[], action: Action) => {
 
         return window;
       });
+    }
 
-    default:
+    case "FOCUS_WINDOW": {
+      const maxZIndex = Math.max(29, ...state.map((win) => win.zIndex));
+
+      return state.map((win) =>
+        win.id === action.payload.id ? { ...win, zIndex: maxZIndex + 1 } : win,
+      );
+    }
+
+    default: {
       return state;
+    }
   }
 };
 
@@ -224,6 +246,7 @@ export const FinderContext = createContext<{
   navigateBack: (id: string) => void;
   navigateForward: (id: string) => void;
   setPosition: (id: string, position: { x: number; y: number }) => void;
+  focusWindow: (id: string) => void;
 }>({
   windows: [],
   isAnyWindowMaximized: false,
@@ -235,6 +258,7 @@ export const FinderContext = createContext<{
   navigateBack: () => {},
   navigateForward: () => {},
   setPosition: () => {},
+  focusWindow: () => {},
 });
 
 type Props = {
@@ -281,6 +305,10 @@ const FinderProvider = ({ children }: Props) => {
     dispatch({ type: "SET_POSITION", payload: { id, position } });
   };
 
+  const focusWindow = (id: string) => {
+    dispatch({ type: "FOCUS_WINDOW", payload: { id } });
+  };
+
   return (
     <FinderContext.Provider
       value={{
@@ -294,6 +322,7 @@ const FinderProvider = ({ children }: Props) => {
         navigateBack,
         navigateForward,
         setPosition,
+        focusWindow,
       }}
     >
       {children}

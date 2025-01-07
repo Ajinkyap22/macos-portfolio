@@ -10,7 +10,7 @@ import { FinderContext } from "@/providers/FinderProvider";
 import type { Window } from "@/providers/FinderProvider";
 
 const Finder = () => {
-  const { windows, navigateBack, navigateForward } = useContext(FinderContext);
+  const { windows } = useContext(FinderContext);
 
   const visibleWindows = windows.filter((window) => window.status === "normal");
 
@@ -33,8 +33,7 @@ const Finder = () => {
             currentIndex={window.currentIndex}
             windowId={window.id}
             position={window.position}
-            handleBack={() => navigateBack(window.id)}
-            handleForward={() => navigateForward(window.id)}
+            zIndex={window.zIndex}
           />
         );
 
@@ -47,6 +46,7 @@ const Finder = () => {
             offset={i * 40}
             windowId={window.id}
             position={window.position}
+            zIndex={window.zIndex}
           />
         );
 
@@ -58,6 +58,7 @@ const Finder = () => {
             offset={i * 40}
             windowId={window.id}
             position={window.position}
+            zIndex={window.zIndex}
           />
         );
     }

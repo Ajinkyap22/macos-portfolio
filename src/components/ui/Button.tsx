@@ -8,9 +8,10 @@ const variantStyles = {
   secondary: "text-textPrimary shadow-all-around",
   primary: "bg-primary text-white shadow-all-around-primary",
   ghost: "text-textPrimary bg-ghost",
+  transparent: "",
 };
 
-type ButtonVariant = "secondary" | "primary" | "ghost";
+type ButtonVariant = "secondary" | "primary" | "ghost" | "transparent";
 
 type ButtonProps = {
   variant: ButtonVariant;
@@ -41,7 +42,3 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 export default Button;
-
-// Usage example:
-// <Button variant="cancel" onClick={() => console.log('Cancel clicked')}>Cancel</Button>
-// <Button variant="save" onClick={() => console.log('Save clicked')}>Save</Button>

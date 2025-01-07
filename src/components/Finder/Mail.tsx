@@ -15,10 +15,18 @@ type Props = {
   offset: number;
   windowId: string;
   position: { x: number; y: number };
+  zIndex: number;
   scaledDown?: boolean;
 };
 
-const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
+const Mail = ({
+  status,
+  offset,
+  windowId,
+  position,
+  zIndex,
+  scaledDown,
+}: Props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -29,8 +37,13 @@ const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
 
   const disabled = !email || !message;
 
-  const { closeWindow, minimizeWindow, maximizeWindow, openWindow } =
-    useContext(FinderContext);
+  const {
+    closeWindow,
+    minimizeWindow,
+    maximizeWindow,
+    openWindow,
+    focusWindow,
+  } = useContext(FinderContext);
 
   const handleClose = () => {
     closeWindow(windowId);
@@ -48,6 +61,10 @@ const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
     if (!scaledDown) return;
 
     openWindow("Desktop", "Desktop", "Mail");
+  };
+
+  const handleFocus = () => {
+    focusWindow(windowId);
   };
 
   const handleMailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,9 +130,11 @@ const Mail = ({ status, offset, windowId, position, scaledDown }: Props) => {
       windowId={windowId}
       offset={offset}
       position={position}
+      zIndex={zIndex}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down relative z-30 flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      className="data-[scaled-down='true']:scaled-down relative flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
+      handleFocus={handleFocus}
     >
       <div className="flex items-center justify-between rounded-t-lg border-b bg-toolbar px-4 sm:py-2">
         <ActionButtons

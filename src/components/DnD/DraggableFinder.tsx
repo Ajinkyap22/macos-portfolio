@@ -11,9 +11,11 @@ type Props = {
   windowId: string;
   position: { x: number; y: number };
   className: string;
+  zIndex: number;
   children: React.ReactNode;
   scaledDown?: boolean;
   handleChangeStatus?: () => void;
+  handleFocus?: () => void;
 };
 
 const DraggableFinder = ({
@@ -22,9 +24,11 @@ const DraggableFinder = ({
   windowId,
   position,
   className,
+  zIndex,
   children,
   scaledDown,
   handleChangeStatus,
+  handleFocus,
 }: Props) => {
   const { attributes, listeners, setNodeRef, style, isDragging } = useDraggable(
     {
@@ -39,7 +43,12 @@ const DraggableFinder = ({
   return (
     <div
       style={
-        scaledDown ? undefined : getStyles(status, offset, style, isMobile)
+        scaledDown
+          ? undefined
+          : {
+              zIndex,
+              ...getStyles(status, offset, style, isMobile),
+            }
       }
       {...listeners}
       {...attributes}
@@ -50,6 +59,7 @@ const DraggableFinder = ({
       draggable={!scaledDown}
       className={className}
       onClick={handleChangeStatus}
+      onFocus={handleFocus}
     >
       {children}
     </div>

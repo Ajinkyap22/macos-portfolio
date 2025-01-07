@@ -1,22 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import FinderSheet from "@/components/Finder/FinderSheet";
 import Mail from "@/components/Finder/Mail";
 import TextEditor from "@/components/Finder/TextEditor";
 
-import { FinderContext, type Window } from "@/providers/FinderProvider";
+import { type Window } from "@/providers/FinderProvider";
 
 type Props = {
   window: Window;
 };
 
 const MinimizedWindow = ({ window }: Props) => {
-  const { openWindow } = useContext(FinderContext);
-
-  const handleChangeStatus = () => {
-    openWindow(window.section, window.folder, window.type);
-  };
-
   switch (window.type) {
     case "Mail":
       return (
@@ -25,6 +19,7 @@ const MinimizedWindow = ({ window }: Props) => {
           offset={0}
           windowId={window.id}
           position={window.position}
+          zIndex={window.zIndex}
           scaledDown
         />
       );
@@ -37,6 +32,7 @@ const MinimizedWindow = ({ window }: Props) => {
           offset={0}
           windowId={window.id}
           position={window.position}
+          zIndex={window.zIndex}
           scaledDown
         />
       );
@@ -52,8 +48,8 @@ const MinimizedWindow = ({ window }: Props) => {
           currentIndex={window.currentIndex}
           windowId={window.id}
           position={window.position}
+          zIndex={window.zIndex}
           scaledDown
-          changeStatus={handleChangeStatus}
         />
       );
   }
