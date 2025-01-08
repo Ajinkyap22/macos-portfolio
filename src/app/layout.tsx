@@ -3,11 +3,11 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 import "@/app/globals.css";
 
-import Dock from "@/components/Dock";
-import Menubar from "@/components/Menubar";
+import Layout from "@/components/RootLayout";
 
 import FinderProvider from "@/providers/FinderProvider";
 import FullscreenProvider from "@/providers/FullscreenProvider";
+import LaunchpadProvider from "@/providers/LaunchpadProvider";
 import StartUpProvider from "@/providers/StartupProvider";
 import ToastProvider from "@/providers/ToastProvider";
 import WallpaperProvider from "@/providers/WallpaperProvider";
@@ -64,13 +64,9 @@ export default function RootLayout({
             <FullscreenProvider>
               <WallpaperProvider>
                 <ToastProvider>
-                  <div className="flex h-full flex-col">
-                    <Menubar />
-
-                    {children}
-
-                    <Dock />
-                  </div>
+                  <LaunchpadProvider>
+                    <Layout>{children}</Layout>
+                  </LaunchpadProvider>
                 </ToastProvider>
               </WallpaperProvider>
             </FullscreenProvider>

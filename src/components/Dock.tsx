@@ -17,10 +17,12 @@ import Mail from "@/icons/mail.png";
 import { skillsData } from "@/data/skillsData";
 
 import { FinderContext } from "@/providers/FinderProvider";
+import { LaunchpadContext } from "@/providers/LaunchpadProvider";
 
 const Dock = () => {
   const { openWindow, isAnyWindowMaximized, windows } =
     useContext(FinderContext);
+  const { toggleLaunchpad } = useContext(LaunchpadContext);
 
   const minimizedWindows = windows.filter(
     (window) => window.status === "minimized",
@@ -54,7 +56,11 @@ const Dock = () => {
           open={!!windows.length}
         />
 
-        <Skill name="Launchpad" icon={LaunchPad} />
+        <Skill
+          name="Skills Launchpad"
+          icon={LaunchPad}
+          onClick={toggleLaunchpad}
+        />
 
         {skillsData.map((skill) => (
           <Skill key={skill.id} name={skill.name} icon={skill.icon} />

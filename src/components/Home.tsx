@@ -49,7 +49,7 @@ const Home = () => {
   };
 
   return (
-    <DndContext handleDragEnd={handleDragEnd} >
+    <DndContext handleDragEnd={handleDragEnd}>
       <div className="relative z-20 flex flex-1 items-center justify-center overflow-hidden">
         <div className="flex h-full w-full items-start justify-end">
           {folders.map((folder) => (
