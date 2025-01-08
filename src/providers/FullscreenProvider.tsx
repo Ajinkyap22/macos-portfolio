@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 type FullscreenContextType = {
   isFullscreen: boolean;
@@ -19,7 +19,9 @@ export const FullscreenContext = createContext<FullscreenContextType>({
 });
 
 const FullscreenProvider = ({ children }: Props) => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(
+    !!document.fullscreenElement,
+  );
 
   const enterFullscreen = () => {
     const element = document.documentElement;
@@ -54,16 +56,35 @@ const FullscreenProvider = ({ children }: Props) => {
       (element as HTMLElement & { msRequestFullscreen?: () => Promise<void> })
         .msRequestFullscreen!();
     }
-
-    setIsFullscreen(true);
   };
 
   const exitFullscreen = () => {
     if (document.exitFullscreen) {
       document.exitFullscreen();
-      setIsFullscreen(false);
     }
   };
+
+  // if fullscreen is exited by pressing the escape key
+  useEffect(() => {
+    const handleExitFullscreen = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", handleExitFullscreen);
+    document.addEventListener("webkitfullscreenchange", handleExitFullscreen);
+    document.addEventListener("mozfullscreenchange", handleExitFullscreen);
+    document.addEventListener("MSFullscreenChange", handleExitFullscreen);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handleExitFullscreen);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleExitFullscreen,
+      );
+      document.removeEventListener("mozfullscreenchange", handleExitFullscreen);
+      document.removeEventListener("MSFullscreenChange", handleExitFullscreen);
+    };
+  }, []);
 
   return (
     <FullscreenContext.Provider

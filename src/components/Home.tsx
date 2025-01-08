@@ -1,15 +1,20 @@
 import React, { useState, useContext } from "react";
 
+import dynamic from "next/dynamic";
+
 import { type DragEndEvent } from "@dnd-kit/core";
 
 import DndContext from "@/components/DnD/DndContext";
 import Finder from "@/components/Finder/Finder";
 import Folder from "@/components/Folder";
-import Fullscreen from "@/components/FullScreen";
 
 import { foldersData } from "@/data/foldersData";
 
 import { FinderContext, type FolderType } from "@/providers/FinderProvider";
+
+const Fullscreen = dynamic(() => import("@/components/FullScreen"), {
+  ssr: false,
+});
 
 const Home = () => {
   const [folders, setFolders] = useState(foldersData);
