@@ -8,7 +8,7 @@ type Props = {
 
 const WallpaperProvider = ({ children }: Props) => {
   useEffect(() => {
-    const savedWallpaper = localStorage.getItem("wallpaper");
+    const savedWallpaper = localStorage?.getItem("wallpaper");
 
     if (savedWallpaper) {
       document.body.style.backgroundImage = `url(${savedWallpaper})`;

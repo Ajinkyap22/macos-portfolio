@@ -16,3 +16,5 @@ export default function Main() {
     return <Startup status={bootStatus} bootUp={bootUp} />;
   }
 }
+
+export const runtime = "edge";

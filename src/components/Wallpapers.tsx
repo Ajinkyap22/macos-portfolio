@@ -13,11 +13,11 @@ import { wallpapersData } from "@/data/wallpapersData";
 
 const Wallpapers = () => {
   const [selectedWallpaper, setSelectedWallpaper] = useState(
-    localStorage.getItem("wallpaper") || "",
+    localStorage?.getItem("wallpaper") || "",
   );
 
   useEffect(() => {
-    const savedWallpaper = localStorage.getItem("wallpaper");
+    const savedWallpaper = localStorage?.getItem("wallpaper");
 
     if (savedWallpaper) {
       document.body.style.backgroundImage = `url(${savedWallpaper})`;
@@ -29,7 +29,7 @@ const Wallpapers = () => {
     document.body.style.backgroundImage = `url(${path})`;
     document.body.classList.remove("initial-bg");
 
-    localStorage.setItem("wallpaper", path);
+    localStorage?.setItem("wallpaper", path);
     setSelectedWallpaper(path);
   };
 

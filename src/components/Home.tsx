@@ -5,6 +5,7 @@ import { type DragEndEvent } from "@dnd-kit/core";
 import DndContext from "@/components/DnD/DndContext";
 import Finder from "@/components/Finder/Finder";
 import Folder from "@/components/Folder";
+import Fullscreen from "@/components/FullScreen";
 
 import { foldersData } from "@/data/foldersData";
 
@@ -65,7 +66,7 @@ const Home = () => {
 
         <Finder />
 
-        {/* <Fullscreen /> */}
+        <Fullscreen />
       </div>
     </DndContext>
   );

@@ -1,11 +1,11 @@
 import React from "react";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import FullscreenToggle from "@/components/FullscreenToggle";
 import LiveDate from "@/components/LiveDate";
 import MacMenu from "@/components/MacMenu";
-import Wallpapers from "@/components/Wallpapers";
 
 import Github from "@/icons/github.svg";
 import HashNode from "@/icons/hashnode.svg";
@@ -14,6 +14,10 @@ import Options from "@/icons/menu-options.svg";
 import SearchIcon from "@/icons/search.svg";
 import Wifi from "@/icons/wifi.svg";
 import YouTube from "@/icons/youtube.svg";
+
+const Wallpapers = dynamic(() => import("@/components/Wallpapers"), {
+  ssr: false,
+});
 
 const Menubar = () => {
   return (

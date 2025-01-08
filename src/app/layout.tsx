@@ -37,7 +37,7 @@ const SFPro = localFont({
   ],
 });
 
-export const Menlo = localFont({
+const Menlo = localFont({
   src: "../../public/fonts/Menlo-Regular.ttf",
   weight: "normal",
   style: "normal",
