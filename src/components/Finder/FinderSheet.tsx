@@ -60,7 +60,7 @@ const FinderSheet = ({
       position={position}
       scaledDown={scaledDown}
       zIndex={zIndex}
-      className="data-[scaled-down='true']:scaled-down flex cursor-default transition-all duration-300 ease-out data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      className="data-[scaled-down='true']:scaled-down flex cursor-default transition-all duration-300 ease-in data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
       handleFocus={handleFocus}
     >

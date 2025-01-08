@@ -132,7 +132,7 @@ const Mail = ({
       position={position}
       zIndex={zIndex}
       scaledDown={scaledDown}
-      className="data-[scaled-down='true']:scaled-down relative flex flex-col bg-white transition-all duration-300 ease-linear data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
+      className="data-[scaled-down='true']:scaled-down relative flex cursor-default flex-col bg-white transition-all duration-300 ease-in data-[status='normal']:rounded-lg data-[status='normal']:shadow-all-around data-[dragging='true']:transition-none"
       handleChangeStatus={handleChangeStatus}
       handleFocus={handleFocus}
     >

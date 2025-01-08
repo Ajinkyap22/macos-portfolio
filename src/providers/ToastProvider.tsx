@@ -19,7 +19,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const ToastProvider = ({ children }: Props) => {
+const ToastProvider = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [description, setDescription] = useState("");
@@ -62,3 +62,5 @@ export const useToast = (): ToastContextType => {
 
   return context;
 };
+
+export default ToastProvider;

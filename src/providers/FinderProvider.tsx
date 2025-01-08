@@ -77,19 +77,23 @@ type Action =
 const windowReducer = (state: Window[], action: Action) => {
   switch (action.type) {
     case "OPEN_WINDOW": {
-      const { section, folder } = action.payload;
+      const { section, folder, type } = action.payload;
 
       const window = state.find(
         (window) =>
           window.section === section &&
           window.folder === folder &&
-          window.type === action.payload.type,
+          window.type === type,
       );
 
       if (window) {
         if (window.status === WindowStatus.Minimized) {
           return state.map((window) => {
-            if (window.section === section && window.folder === folder) {
+            if (
+              window.section === section &&
+              window.folder === folder &&
+              window.type === type
+            ) {
               return { ...window, status: WindowStatus.Normal };
             }
 

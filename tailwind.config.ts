@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         primary: "#007AFF",
+        "selected-primary": "#0a82ffbf",
         alert: "#f6f6f6f2",
         popover: "#E5E5E5",
         close: "#FF5F57",

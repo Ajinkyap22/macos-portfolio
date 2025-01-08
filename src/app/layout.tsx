@@ -8,7 +8,8 @@ import Menubar from "@/components/Menubar";
 
 import FinderProvider from "@/providers/FinderProvider";
 import FullscreenProvider from "@/providers/FullscreenProvider";
-import { ToastProvider } from "@/providers/ToastProvider";
+import StartUpProvider from "@/providers/StartupProvider";
+import ToastProvider from "@/providers/ToastProvider";
 import WallpaperProvider from "@/providers/WallpaperProvider";
 
 const SFPro = localFont({
@@ -58,21 +59,23 @@ export default function RootLayout({
       <body
         className={`${SFPro.className} ${Menlo.variable} initial-bg overflow-hidden antialiased`}
       >
-        <FinderProvider>
-          <FullscreenProvider>
-            <WallpaperProvider>
-              <ToastProvider>
-                <div className="flex h-full flex-col">
-                  <Menubar />
+        <StartUpProvider>
+          <FinderProvider>
+            <FullscreenProvider>
+              <WallpaperProvider>
+                <ToastProvider>
+                  <div className="flex h-full flex-col">
+                    <Menubar />
 
-                  {children}
+                    {children}
 
-                  <Dock />
-                </div>
-              </ToastProvider>
-            </WallpaperProvider>
-          </FullscreenProvider>
-        </FinderProvider>
+                    <Dock />
+                  </div>
+                </ToastProvider>
+              </WallpaperProvider>
+            </FullscreenProvider>
+          </FinderProvider>
+        </StartUpProvider>
       </body>
     </html>
   );

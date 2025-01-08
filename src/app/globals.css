@@ -73,3 +73,19 @@ body {
 body {
   background-size: cover;
 }
+
+@keyframes fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-fill {
+  animation-name: fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 2400ms;
+}

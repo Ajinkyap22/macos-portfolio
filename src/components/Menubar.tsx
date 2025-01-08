@@ -4,9 +4,9 @@ import Image from "next/image";
 
 import FullscreenToggle from "@/components/FullscreenToggle";
 import LiveDate from "@/components/LiveDate";
+import MacMenu from "@/components/MacMenu";
 import Wallpapers from "@/components/Wallpapers";
 
-import AppleLight from "@/icons/apple-light.svg";
 import Github from "@/icons/github.svg";
 import HashNode from "@/icons/hashnode.svg";
 import LinkedIn from "@/icons/linkedin.svg";
@@ -19,13 +19,7 @@ const Menubar = () => {
   return (
     <div className="flex items-center justify-between bg-black/40 px-2.5 py-0.5">
       <div className="flex items-center gap-x-2 sm:gap-x-1.5">
-        <button className="shrink-0 rounded hover:bg-selected sm:px-2 sm:py-1">
-          <Image
-            src={AppleLight}
-            alt="Apple"
-            className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-          />
-        </button>
+        <MacMenu />
 
         <span className="rounded px-1 text-regular font-bold text-white hover:bg-selected sm:px-2 sm:py-1">
           Finder
