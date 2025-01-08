@@ -19,9 +19,7 @@ export const FullscreenContext = createContext<FullscreenContextType>({
 });
 
 const FullscreenProvider = ({ children }: Props) => {
-  const [isFullscreen, setIsFullscreen] = useState(
-    !!document.fullscreenElement,
-  );
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const enterFullscreen = () => {
     const element = document.documentElement;
@@ -67,7 +65,7 @@ const FullscreenProvider = ({ children }: Props) => {
   // if fullscreen is exited by pressing the escape key
   useEffect(() => {
     const handleExitFullscreen = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      setIsFullscreen(!!document?.fullscreenElement);
     };
 
     document.addEventListener("fullscreenchange", handleExitFullscreen);

@@ -18,7 +18,7 @@ const Fullscreen = () => {
   const { enterFullscreen } = useContext(FullscreenContext);
 
   useEffect(() => {
-    if (!!document.fullscreenElement) return;
+    if (!!document?.fullscreenElement) return;
 
     const timeout = setTimeout(() => {
       setIsOpen(true);
