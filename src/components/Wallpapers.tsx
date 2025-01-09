@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 
 import Image from "next/image";
 
@@ -11,26 +11,15 @@ import Wallpaper from "@/icons/wallpaper.svg";
 
 import { wallpapersData } from "@/data/wallpapersData";
 
+import { WallpaperContext } from "@/providers/WallpaperProvider";
+
 const Wallpapers = () => {
-  const [selectedWallpaper, setSelectedWallpaper] = useState(
-    localStorage?.getItem("wallpaper") || "",
-  );
-
-  useEffect(() => {
-    const savedWallpaper = localStorage?.getItem("wallpaper");
-
-    if (savedWallpaper) {
-      document.body.style.backgroundImage = `url(${savedWallpaper})`;
-      setSelectedWallpaper("");
-    }
-  }, []);
+  const { wallpaperPath, setWallpaper } = useContext(WallpaperContext);
 
   const handleWallpaperClick = (path: string) => {
-    document.body.style.backgroundImage = `url(${path})`;
     document.body.classList.remove("initial-bg");
 
-    localStorage?.setItem("wallpaper", path);
-    setSelectedWallpaper(path);
+    setWallpaper(path);
   };
 
   return (
@@ -63,7 +52,7 @@ const Wallpapers = () => {
                 className="aspect-square"
               />
 
-              {selectedWallpaper === wallpaper.path && (
+              {wallpaperPath === wallpaper.path && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
                   <Image src={Tick} alt="selected" className="h-6 w-6" />
                 </div>

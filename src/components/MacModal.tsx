@@ -26,7 +26,7 @@ const MacModal = ({ isOpen, toggleOpen }: Props) => {
       transition
       className="fixed inset-0 z-40 flex w-screen items-center justify-center"
     >
-      <DialogPanel className="flex max-w-[260px] flex-col items-center justify-center rounded-regular bg-toolbar p-2 pb-4 shadow-all-around">
+      <DialogPanel className="flex max-w-[260px] flex-col items-center justify-center rounded-regular bg-sidebar p-2 pb-4 shadow-all-around">
         <div className="flex w-full items-center justify-start">
           <ActionButtonsPartial handleClose={toggleOpen} status="normal" />
         </div>

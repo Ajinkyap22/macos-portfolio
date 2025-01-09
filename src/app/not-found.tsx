@@ -33,7 +33,7 @@ const NotFound = () => {
       transition
       className="fixed inset-0 z-40 flex w-screen items-center justify-center"
     >
-      <DialogPanel className="flex max-w-[260px] flex-col items-center justify-center gap-y-3 rounded-regular bg-toolbar p-4 shadow-all-around">
+      <DialogPanel className="flex max-w-[260px] flex-col items-center justify-center gap-y-3 rounded-regular bg-sidebar p-4 shadow-all-around">
         <Image src={AppleIcon} alt="Email" className="h-12 w-12" />
 
         <div className="flex flex-col items-center gap-y-3">
