@@ -26,6 +26,7 @@ const RootLayout = ({ children }: Props) => {
         layout="fill"
         alt="wallpaper"
         className="-z-10"
+        priority
       />
 
       <Launchpad show={showLaunchpad} handleClose={toggleLaunchpad} />
