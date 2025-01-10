@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import FullscreenToggle from "@/components/FullscreenToggle";
-import LiveDate from "@/components/LiveDate";
 import MacMenu from "@/components/MacMenu";
 
 import Github from "@/icons/github.svg";
@@ -16,6 +15,9 @@ import Wifi from "@/icons/wifi.svg";
 import YouTube from "@/icons/youtube.svg";
 
 const Wallpapers = dynamic(() => import("@/components/Wallpapers"), {
+  ssr: false,
+});
+const LiveDate = dynamic(() => import("@/components/LiveDate"), {
   ssr: false,
 });
 

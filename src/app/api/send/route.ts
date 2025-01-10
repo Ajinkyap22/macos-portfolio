@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: `Portfolio - ${FROM_EMAIL}`,
+      from: `Portfolio <${FROM_EMAIL}>`,
       to: RECEIVER_EMAIL,
       subject: `New message from ${name || from} on your portfolio website.`,
       react: EmailTemplate(templateBody),

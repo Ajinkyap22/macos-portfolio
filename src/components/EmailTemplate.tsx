@@ -7,7 +7,7 @@ type Props = {
   message: string;
 };
 
-const colorOptions = ["#FF5252", "#FF5722", "#4CAF50"];
+const colorOptions = ["#FF5722", "#4CAF50", "#FF5252"];
 
 const EmailTemplate = ({ name, email, subject, message }: Props) => {
   const PRIMARY_COLOR =
@@ -24,36 +24,67 @@ const EmailTemplate = ({ name, email, subject, message }: Props) => {
         borderRadius: "8px",
         maxWidth: "600px",
         margin: "0 auto",
-        display: "flex",
-        flexDirection: "column",
-        gap: "8px",
       }}
     >
-      <h1 style={{ fontSize: "24px", color: PRIMARY_COLOR }}>{subject}</h1>
-
-      <p style={{ fontSize: "18px" }}>
-        <strong>Name:</strong> {name}
-      </p>
-
-      <p style={{ fontSize: "18px" }}>
-        <strong>Email:</strong> {email}
-      </p>
-
-      <p style={{ fontSize: "16px" }}>
-        <strong>Message:</strong>
-      </p>
-
-      <blockquote
+      <table
+        role="presentation"
+        width="100%"
+        cellPadding="0"
+        cellSpacing="0"
         style={{
-          fontStyle: "italic",
-          color: "#555",
-          padding: "10px 20px",
-          borderLeft: `4px solid ${PRIMARY_COLOR}`,
-          backgroundColor: "#f9f9f9",
+          marginBottom: "16px",
         }}
       >
-        {message}
-      </blockquote>
+        <tbody>
+          <tr>
+            <td
+              style={{
+                fontSize: "24px",
+                color: PRIMARY_COLOR,
+                fontWeight: "bold",
+              }}
+            >
+              {subject}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table role="presentation" width="100%" cellPadding="0" cellSpacing="0">
+        <tbody>
+          <tr>
+            <td style={{ fontSize: "18px", paddingBottom: "8px" }}>
+              <strong>Name:</strong> {name}
+            </td>
+          </tr>
+          <tr>
+            <td style={{ fontSize: "18px", paddingBottom: "8px" }}>
+              <strong>Email:</strong> {email}
+            </td>
+          </tr>
+          <tr>
+            <td style={{ fontSize: "16px", paddingBottom: "8px" }}>
+              <strong>Message:</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <blockquote
+                style={{
+                  fontStyle: "italic",
+                  color: "#555",
+                  padding: "10px 20px",
+                  borderLeft: `4px solid ${PRIMARY_COLOR}`,
+                  backgroundColor: "#f9f9f9",
+                  margin: "0",
+                }}
+              >
+                {message}
+              </blockquote>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <footer
         style={{

@@ -20,10 +20,10 @@ const RootLayout = ({ children }: Props) => {
   const { wallpaperPath } = useContext(WallpaperContext);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="relative flex h-full flex-col">
       <Image
         src={wallpaperPath}
-        layout="fill"
+        fill
         alt="wallpaper"
         className="-z-10"
         priority
