@@ -51,7 +51,7 @@ const Wallpapers = () => {
                 height={108}
                 className="aspect-square"
                 quality={25}
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                sizes="(max-width: 768px) 30vw, (max-width: 1200px) 20vw, 15vw"
               />
 
               {wallpaperPath === wallpaper.path && (

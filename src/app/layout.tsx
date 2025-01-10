@@ -46,7 +46,8 @@ const Menlo = localFont({
 
 export const metadata: Metadata = {
   title: "Ajinkya Palaskar | Software Engineer",
-  description: "My MacOS themed portfolio website",
+  description:
+    "I'm a software engineer from India. I love to build things from scratch and learn new stuff. This is my macOS themed portfolio.",
 };
 
 export default function RootLayout({
