@@ -4,6 +4,7 @@ import EmailTemplate from "@/components/EmailTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const FROM_EMAIL = process.env.FROM_EMAIL!;
 const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL!;
 
 export async function POST(request: Request) {
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "Portfolio <you@onresend.com>", // TODO: Update this after getting a domain
+      from: `Portfolio - ${FROM_EMAIL}`,
       to: RECEIVER_EMAIL,
       subject: `New message from ${name || from} on your portfolio website.`,
       react: EmailTemplate(templateBody),
@@ -34,5 +35,3 @@ export async function POST(request: Request) {
     return Response.json({ error }, { status: 500 });
   }
 }
-
-export const runtime = "edge";
