@@ -163,7 +163,7 @@ const Mail = ({
           <input
             type="email"
             id="email"
-            className="flex-1 py-2 pr-5 text-textPrimary outline-none"
+            className="min-w-0 flex-1 py-2 pr-5 text-textPrimary outline-none"
             value={email}
             onChange={handleMailChange}
           />
@@ -178,7 +178,7 @@ const Mail = ({
           <input
             type="text"
             id="name"
-            className="flex-1 py-2 pr-5 text-textPrimary outline-none"
+            className="min-w-0 flex-1 py-2 pr-5 text-textPrimary outline-none"
             value={name}
             onChange={handleNameChange}
           />
@@ -193,7 +193,7 @@ const Mail = ({
           <input
             type="text"
             id="subject"
-            className="flex-1 py-2 pr-5 text-textPrimary outline-none"
+            className="min-w-0 flex-1 py-2 pr-5 text-textPrimary outline-none"
             value={subject}
             onChange={handleSubjectChange}
           />

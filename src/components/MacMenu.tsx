@@ -40,11 +40,11 @@ const MacMenu = () => {
         <PopoverPanel
           transition
           anchor="bottom"
-          className="z-50 ml-2 flex min-w-60 flex-col rounded bg-toolbar p-1 text-black/75 transition duration-200 ease-in-out data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+          className="z-50 ml-2 mt-1 flex min-w-60 flex-col rounded bg-toolbar p-1 text-black/75 transition duration-200 ease-in-out data-[closed]:-translate-y-1 data-[closed]:opacity-0 sm:mt-0"
         >
           <CloseButton
             onClick={toggleOpen}
-            className="hover:bg-selected-primary rounded px-2 py-1 text-left text-regular font-medium hover:text-white"
+            className="rounded px-2 py-1 text-left text-regular font-medium hover:bg-selected-primary hover:text-white"
           >
             About This Mac
           </CloseButton>
@@ -52,14 +52,14 @@ const MacMenu = () => {
 
           <CloseButton
             onClick={bootUp}
-            className="hover:bg-selected-primary rounded px-2 py-1 text-left text-regular font-medium hover:text-white"
+            className="rounded px-2 py-1 text-left text-regular font-medium hover:bg-selected-primary hover:text-white"
           >
             Restart...
           </CloseButton>
 
           <CloseButton
             onClick={shutdown}
-            className="hover:bg-selected-primary rounded px-2 py-1 text-left text-regular font-medium hover:text-white"
+            className="rounded px-2 py-1 text-left text-regular font-medium hover:bg-selected-primary hover:text-white"
           >
             Shut Down...
           </CloseButton>

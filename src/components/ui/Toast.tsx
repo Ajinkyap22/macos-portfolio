@@ -42,7 +42,7 @@ export const Toast: React.FC<ToastProps> = ({
       transition
       onClose={onClose}
     >
-      <DialogPanel className="group pointer-events-auto relative min-w-72 rounded-2xl bg-alert shadow-all-around ring-1 ring-black ring-opacity-5">
+      <DialogPanel className="group pointer-events-auto relative min-w-72 rounded-2xl bg-popover shadow-all-around ring-1 ring-black ring-opacity-5">
         <div className="flex items-center gap-2 px-2.5 py-4">
           <div className="flex-shrink-0">
             <Image

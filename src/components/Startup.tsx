@@ -17,12 +17,14 @@ const Startup = ({ status, bootUp }: Props) => {
       <Image src={AppleIcon} alt="Apple Icon" className="h-24 w-24" />
 
       {status === "booting" ? (
-        <div className="h-2 w-1/5 rounded-full bg-zinc-500">
+        <div className="h-2 w-1/3  rounded-full bg-zinc-500 sm:w-1/5">
           <div className="animate-fill h-2 rounded-full bg-white"></div>
         </div>
       ) : (
         <div className="flex flex-col items-center gap-y-3">
-          <span className="font-medium text-white">This Mac is shut down.</span>
+          <span className="font-medium text-white">
+            This Mac is powered off.
+          </span>
 
           <Button
             variant="transparent"

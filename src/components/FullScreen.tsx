@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, useContext } from "react";
 
+import { usePathname } from "next/navigation";
+
 import {
   Description,
   Dialog,
@@ -16,6 +18,7 @@ import { FullscreenContext } from "@/providers/FullscreenProvider";
 const Fullscreen = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { enterFullscreen } = useContext(FullscreenContext);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!!document?.fullscreenElement) return;
@@ -35,6 +38,8 @@ const Fullscreen = () => {
     toggleModal();
     enterFullscreen();
   };
+
+  if (pathname !== "/") return null;
 
   return (
     <>

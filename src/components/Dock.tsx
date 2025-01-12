@@ -14,6 +14,8 @@ import Finder from "@/icons/finder.png";
 import LaunchPad from "@/icons/launchpad.png";
 import Mail from "@/icons/mail.png";
 
+import { isSafari } from "@/utils/isSafari";
+
 import { skillsData } from "@/data/skillsData";
 
 import { FinderContext } from "@/providers/FinderProvider";
@@ -39,10 +41,9 @@ const Dock = () => {
   return (
     <div
       data-clickable={!isAnyWindowMaximized}
-      className="group fixed left-0 top-0 z-10 flex h-full items-center data-[clickable='true']:z-20 sm:bottom-0 sm:left-auto sm:top-auto sm:h-auto sm:w-full sm:items-stretch sm:justify-center"
+      className="group fixed left-0 top-0 z-10 flex h-full items-center data-[clickable='true']:z-20 sm:bottom-0 sm:left-auto sm:top-auto sm:z-50 sm:h-auto sm:w-full sm:items-stretch sm:justify-center"
     >
       <div
-        data-show={!isAnyWindowMaximized}
         className={clsx(
           "flex max-h-[90%] flex-col items-center justify-center gap-2 rounded-xl bg-dock p-2 transition-transform duration-300 group-hover:translate-y-0 sm:w-auto sm:max-w-[90%] sm:flex-row sm:rounded-2xl lg:h-[70px] lg:gap-4 lg:p-3",
           isAnyWindowMaximized &&
@@ -70,9 +71,10 @@ const Dock = () => {
 
         <Skill onClick={handleContactClick} name="Contact Me" icon={Mail} />
 
-        {minimizedWindows.map((window) => (
-          <MinimizedWindow key={window.id} window={window} />
-        ))}
+        {!isSafari() &&
+          minimizedWindows.map((window) => (
+            <MinimizedWindow key={window.id} window={window} />
+          ))}
       </div>
     </div>
   );

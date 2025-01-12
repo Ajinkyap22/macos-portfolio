@@ -4,6 +4,9 @@ import Image from "next/image";
 
 import { Transition } from "@headlessui/react";
 
+import IconButton from "@/components/ui/IconButton";
+
+import CloseIcon from "@/icons/close-circle.svg";
 import Search from "@/icons/search.svg";
 
 import { skillsData } from "@/data/skillsData";
@@ -27,21 +30,27 @@ const Launchpad = ({ show, handleClose }: Props) => {
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const isSkill = (e.target as HTMLElement).closest("#skill");
+    const isSearch = (e.target as HTMLElement).closest("#search");
 
-    if (!isSkill) {
+    if (!isSkill && !isSearch) {
       handleClose();
     }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
   };
 
   return (
     <Transition show={show}>
       <div
         onClick={handleClick}
-        className="fixed inset-0 z-10 flex w-screen flex-col items-center justify-start gap-8 bg-black/30 px-16 py-6 backdrop-blur-lg transition-opacity duration-300 ease-out data-[closed]:opacity-0"
+        className="fixed inset-0 z-10 flex w-screen flex-col items-center justify-start gap-8 overflow-auto bg-black/30 px-16 py-6 backdrop-blur-lg transition-opacity duration-300 ease-out data-[closed]:opacity-0"
       >
         <div
           tabIndex={0}
           onFocus={() => inputRef.current?.focus()}
+          id="search"
           className="group relative flex w-60 items-center justify-center gap-1.5 rounded border border-[#a9c0dc82] p-1"
         >
           <Image src={Search} alt="Search" className="h-3.5 w-3.5" />
@@ -50,13 +59,22 @@ const Launchpad = ({ show, handleClose }: Props) => {
             ref={inputRef}
             type="text"
             placeholder="Search"
-            className="w-12 min-w-0 bg-transparent text-regular text-white outline-none transition-[width] group-focus-within:w-full"
+            className="w-12 min-w-0 bg-transparent text-sm text-white outline-none transition-[width] placeholder:opacity-80 group-focus-within:w-full"
             value={searchQuery}
             onChange={handleSearch}
           />
+
+          {searchQuery && (
+            <IconButton
+              icon={CloseIcon}
+              title="Close"
+              className="!p-0"
+              handleClick={clearSearch}
+            />
+          )}
         </div>
 
-        <div className="grid grid-cols-4 gap-x-20 gap-y-10">
+        <div className="grid grid-cols-3 gap-x-20 gap-y-10 sm:grid-cols-4">
           {filteredSkills.map((skill) => (
             <div
               key={skill.name}

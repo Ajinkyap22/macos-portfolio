@@ -2,6 +2,7 @@
 
 import React, { useContext } from "react";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import Dock from "@/components/Dock";
@@ -10,6 +11,10 @@ import Menubar from "@/components/Menubar";
 
 import { LaunchpadContext } from "@/providers/LaunchpadProvider";
 import { WallpaperContext } from "@/providers/WallpaperProvider";
+
+const Fullscreen = dynamic(() => import("@/components/FullScreen"), {
+  ssr: false,
+});
 
 type Props = {
   children: React.ReactNode;
@@ -38,6 +43,8 @@ const RootLayout = ({ children }: Props) => {
           {children}
         </>
       )}
+
+      <Fullscreen />
 
       <Dock />
     </div>

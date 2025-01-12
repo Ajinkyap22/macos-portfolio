@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+
+import clsx from "clsx";
 
 import FullscreenToggle from "@/components/FullscreenToggle";
 import MacMenu from "@/components/MacMenu";
@@ -14,6 +16,8 @@ import SearchIcon from "@/icons/search.svg";
 import Wifi from "@/icons/wifi.svg";
 import YouTube from "@/icons/youtube.svg";
 
+import { FinderContext } from "@/providers/FinderProvider";
+
 const Wallpapers = dynamic(() => import("@/components/Wallpapers"), {
   ssr: false,
 });
@@ -22,8 +26,15 @@ const LiveDate = dynamic(() => import("@/components/LiveDate"), {
 });
 
 const Menubar = () => {
+  const { isAnyWindowMaximized } = useContext(FinderContext);
+
   return (
-    <div className="flex items-center justify-between bg-black/40 px-2.5 py-0.5">
+    <div
+      className={clsx(
+        "z-30 flex items-center justify-between bg-black/40 px-2.5 py-0.5 sm:z-auto",
+        isAnyWindowMaximized && "z-auto",
+      )}
+    >
       <div className="flex items-center gap-x-2 sm:gap-x-1.5">
         <MacMenu />
 

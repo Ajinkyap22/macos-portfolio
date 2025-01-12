@@ -30,7 +30,7 @@ const ActionButtons = ({
         <Image
           src={Close}
           alt="Close"
-          className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="transition-opacity duration-300 group-hover:opacity-100 sm:opacity-0"
         />
       </button>
 
@@ -42,7 +42,7 @@ const ActionButtons = ({
         <Image
           src={Minimize}
           alt="Minimize"
-          className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="transition-opacity duration-300 group-hover:opacity-100 sm:opacity-0"
         />
       </button>
 
@@ -54,7 +54,7 @@ const ActionButtons = ({
         <Image
           src={status === "maximized" ? ExitMaximize : Maximize}
           alt="Maximize"
-          className="rotate-90 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="rotate-90 transition-opacity duration-300 group-hover:opacity-100 sm:opacity-0"
         />
       </button>
     </div>

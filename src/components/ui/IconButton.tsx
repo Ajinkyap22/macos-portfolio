@@ -35,8 +35,9 @@ const IconButton = ({
         <Image
           src={icon}
           alt="Send"
-          className={clsx("h-5 w-5", iconClassName, {
+          className={clsx(iconClassName, {
             "opacity-50": isDisabled,
+            "h-5 w-5": !iconClassName,
           })}
         />
       </button>
