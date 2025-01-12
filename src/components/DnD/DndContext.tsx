@@ -20,6 +20,7 @@ const DndContext = ({ children, handleDragEnd }: Props) => {
       distance: 10,
     },
   });
+
   const touchSensor = useSensor(TouchSensor, {
     activationConstraint: {
       delay: 250,

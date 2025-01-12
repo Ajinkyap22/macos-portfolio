@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import Dock from "@/components/Dock";
-import Launchpad from "@/components/Launchpad";
 import Menubar from "@/components/Menubar";
 
 import { LaunchpadContext } from "@/providers/LaunchpadProvider";
@@ -15,6 +14,7 @@ import { WallpaperContext } from "@/providers/WallpaperProvider";
 const Fullscreen = dynamic(() => import("@/components/FullScreen"), {
   ssr: false,
 });
+const Launchpad = dynamic(() => import('@/components/Launchpad'));
 
 type Props = {
   children: React.ReactNode;

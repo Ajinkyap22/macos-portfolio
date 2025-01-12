@@ -2,12 +2,12 @@
 
 import React, { useContext } from "react";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 
 import clsx from "clsx";
 
-import MinimizedWindow from "@/components/MinimizedWindow";
 import Tooltip from "@/components/ui/Tooltip";
 
 import Finder from "@/icons/finder.png";
@@ -20,6 +20,8 @@ import { skillsData } from "@/data/skillsData";
 
 import { FinderContext } from "@/providers/FinderProvider";
 import { LaunchpadContext } from "@/providers/LaunchpadProvider";
+
+const MinimizedWindow = dynamic(() => import("@/components/MinimizedWindow"));
 
 const Dock = () => {
   const { openWindow, isAnyWindowMaximized, windows } =

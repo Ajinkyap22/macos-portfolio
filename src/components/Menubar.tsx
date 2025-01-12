@@ -6,7 +6,6 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import FullscreenToggle from "@/components/FullscreenToggle";
-import MacMenu from "@/components/MacMenu";
 
 import Github from "@/icons/github.svg";
 import HashNode from "@/icons/hashnode.svg";
@@ -24,6 +23,7 @@ const Wallpapers = dynamic(() => import("@/components/Wallpapers"), {
 const LiveDate = dynamic(() => import("@/components/LiveDate"), {
   ssr: false,
 });
+const MacMenu = dynamic(() => import("@/components/MacMenu"));
 
 const Menubar = () => {
   const { isAnyWindowMaximized } = useContext(FinderContext);
