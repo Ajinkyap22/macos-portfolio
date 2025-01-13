@@ -47,6 +47,9 @@ const Content = ({
       case "Experience":
         return <TextFile name="Experience" top={0} left={0} />;
 
+      case "Features":
+        return <TextFile name="Features" top={0} left={0} />;
+
       default:
         return <Desktop windowId={windowId} />;
     }

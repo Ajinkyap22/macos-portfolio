@@ -10,6 +10,7 @@ import Document from "@/icons/document.png";
 import { aboutData } from "@/data/aboutData";
 import { educationData } from "@/data/educationData";
 import { experienceData } from "@/data/experienceData";
+import { featuresData } from "@/data/featuresData";
 
 import { FolderType, FinderContext } from "@/providers/FinderProvider";
 
@@ -72,6 +73,9 @@ const TextEditor = ({
 
       case "Experience":
         return experienceData;
+
+      case "Features":
+        return featuresData;
 
       default:
         return "";

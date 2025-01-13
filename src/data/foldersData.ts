@@ -27,6 +27,13 @@ export const foldersData = [
       y: 310,
     },
   },
+  {
+    name: "Features",
+    position: {
+      x: -20,
+      y: 410,
+    },
+  },
 ];
 
 export const innerFoldersData = [
@@ -55,6 +62,13 @@ export const innerFoldersData = [
     name: "Experience",
     position: {
       x: 300,
+      y: 0,
+    },
+  },
+  {
+    name: "Features",
+    position: {
+      x: 400,
       y: 0,
     },
   },

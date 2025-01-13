@@ -21,7 +21,7 @@ const Launchpad = ({ show, handleClose }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const filteredSkills = skillsData.filter((skill) =>
-    skill.name.toLowerCase().includes(searchQuery),
+    skill.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

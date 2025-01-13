@@ -9,7 +9,8 @@ export type FolderType =
   | "Experience"
   | "Projects"
   | "Education"
-  | "Desktop";
+  | "Desktop"
+  | "Features";
 
 export enum WindowStatus {
   Minimized = "minimized",
