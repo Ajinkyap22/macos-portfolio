@@ -149,6 +149,7 @@ const Mail = ({
           title="Send message"
           iconClassName="-rotate-12"
           isDisabled={disabled}
+          umamiEvent="Clicked on send mail"
           handleClick={handleSubmit}
         />
       </div>

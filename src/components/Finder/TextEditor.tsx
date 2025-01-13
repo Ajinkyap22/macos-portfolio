@@ -121,6 +121,7 @@ const TextEditor = ({
             data-bold={line.startsWith("•")}
             className="py-1 text-mini text-black outline-none data-[bold='true']:font-bold"
             suppressContentEditableWarning
+            data-umami-event="Tried to edit text file"
           >
             {line}
           </p>

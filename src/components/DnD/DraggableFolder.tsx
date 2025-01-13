@@ -41,6 +41,7 @@ const DraggableFolder = ({
       ref={setNodeRef}
       onDoubleClick={isMobile ? undefined : handleOpen}
       onClick={isMobile ? handleOpen : undefined}
+      data-umami-event="Clicked/Dragged Folder"
     >
       {children}
     </button>

@@ -46,7 +46,12 @@ const NotFound = () => {
             home URL.
           </Description>
 
-          <Button onClick={goHome} variant="primary" className="w-full">
+          <Button
+            umamiEvent="Redirected from 404"
+            onClick={goHome}
+            variant="primary"
+            className="w-full"
+          >
             Go Home
           </Button>
         </div>

@@ -29,7 +29,10 @@ const MacMenu = () => {
   return (
     <>
       <Popover className="relative">
-        <PopoverButton className="shrink-0 rounded outline-none hover:bg-selected focus:bg-selected sm:px-2 sm:py-1">
+        <PopoverButton
+          data-umami-event="Opened Mac Menu"
+          className="shrink-0 rounded outline-none hover:bg-selected focus:bg-selected sm:px-2 sm:py-1"
+        >
           <Image
             src={AppleLight}
             alt="Apple"
@@ -44,6 +47,7 @@ const MacMenu = () => {
         >
           <CloseButton
             onClick={toggleOpen}
+            data-umami-event="Clicked About this Mac"
             className="rounded px-2 py-1 text-left text-regular font-medium hover:bg-selected-primary hover:text-white"
           >
             About This Mac
@@ -52,6 +56,7 @@ const MacMenu = () => {
 
           <CloseButton
             onClick={bootUp}
+            data-umami-event="Clicked Restart"
             className="rounded px-2 py-1 text-left text-regular font-medium hover:bg-selected-primary hover:text-white"
           >
             Restart...
@@ -59,6 +64,7 @@ const MacMenu = () => {
 
           <CloseButton
             onClick={shutdown}
+            data-umami-event="Clicked Shutdown"
             className="rounded px-2 py-1 text-left text-regular font-medium hover:bg-selected-primary hover:text-white"
           >
             Shut Down...

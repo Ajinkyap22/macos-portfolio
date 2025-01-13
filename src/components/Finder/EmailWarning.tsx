@@ -53,7 +53,12 @@ const EmailWarning = ({ email, isOpen, handleClose, handleSend }: Props) => {
                 Cancel
               </Button>
 
-              <Button onClick={handleSend} variant="primary" className="flex-1">
+              <Button
+                umamiEvent="Sent mail with invalid email"
+                onClick={handleSend}
+                variant="primary"
+                className="flex-1"
+              >
                 Send Anyway
               </Button>
             </div>

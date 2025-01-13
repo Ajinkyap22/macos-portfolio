@@ -19,6 +19,7 @@ type ButtonProps = {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  umamiEvent?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -27,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className,
   disabled = false,
+  umamiEvent,
 }) => {
   return (
     <button
@@ -35,6 +37,7 @@ const Button: React.FC<ButtonProps> = ({
       })}
       onClick={onClick}
       disabled={disabled}
+      data-umami-event={umamiEvent}
     >
       {children}
     </button>

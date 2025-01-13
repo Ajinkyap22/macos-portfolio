@@ -60,11 +60,19 @@ const Fullscreen = () => {
           </Description>
 
           <div className="flex flex-col gap-3 self-stretch">
-            <Button variant="primary" onClick={handleFullscreen}>
+            <Button
+              umamiEvent="Entered Fullscreen"
+              variant="primary"
+              onClick={handleFullscreen}
+            >
               Enter Fullscreen
             </Button>
 
-            <Button variant="ghost" onClick={toggleModal}>
+            <Button
+              umamiEvent="Dismissed Fullscreen"
+              variant="ghost"
+              onClick={toggleModal}
+            >
               Dismiss
             </Button>
           </div>

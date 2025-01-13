@@ -25,6 +25,7 @@ const ActionButtons = ({
       {/* close  */}
       <button
         onClick={handleClose}
+        data-umami-event="Closed window"
         className="flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full border-[0.5px] border-stroke bg-close p-[1px] sm:h-3 sm:w-3"
       >
         <Image
@@ -37,6 +38,7 @@ const ActionButtons = ({
       {/* minimize */}
       <button
         onClick={handleMinimize}
+        data-umami-event="Minimized window"
         className="flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full border-[0.5px] border-stroke bg-minimize sm:h-3 sm:w-3"
       >
         <Image
@@ -49,6 +51,7 @@ const ActionButtons = ({
       {/* maximize */}
       <button
         onClick={handleMaximize}
+        data-umami-event="Maximized window"
         className="flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full border-[0.5px] border-stroke bg-maximize sm:h-3 sm:w-3"
       >
         <Image

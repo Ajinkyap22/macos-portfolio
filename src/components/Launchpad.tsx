@@ -45,6 +45,7 @@ const Launchpad = ({ show, handleClose }: Props) => {
     <Transition show={show}>
       <div
         onClick={handleClick}
+        data-umami-event="Launchpad Close"
         className="fixed inset-0 z-10 flex w-screen flex-col items-center justify-start gap-8 overflow-auto bg-black/30 px-16 py-6 backdrop-blur-lg transition-opacity duration-300 ease-out data-[closed]:opacity-0"
       >
         <div
@@ -52,6 +53,7 @@ const Launchpad = ({ show, handleClose }: Props) => {
           onFocus={() => inputRef.current?.focus()}
           id="search"
           className="group relative flex w-60 items-center justify-center gap-1.5 rounded border border-[#a9c0dc82] p-1"
+          data-umami-event="Launchpad Search"
         >
           <Image src={Search} alt="Search" className="h-3.5 w-3.5" />
 

@@ -24,6 +24,7 @@ const FullscreenToggle = () => {
   return (
     <button
       onClick={toggleFullscreen}
+      data-umami-event="Toggled Fullscreen"
       className="shrink-0 rounded hover:bg-selected sm:px-2 sm:py-1"
     >
       <Image

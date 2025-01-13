@@ -40,6 +40,17 @@ const DraggableFinder = ({
 
   const isMobile = useIsMobile(1024);
 
+  const handleClick = () => {
+    if (!handleChangeStatus) return;
+
+    handleChangeStatus();
+
+    if (scaledDown) {
+      const umami = window.umami;
+      umami?.track(`Open minimized window`);
+    }
+  };
+
   return (
     <div
       style={
@@ -58,7 +69,7 @@ const DraggableFinder = ({
       ref={setNodeRef}
       draggable={!scaledDown}
       className={className}
-      onClick={handleChangeStatus}
+      onClick={handleClick}
       onFocus={handleFocus}
     >
       {children}

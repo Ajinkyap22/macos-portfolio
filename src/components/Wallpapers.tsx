@@ -24,7 +24,10 @@ const Wallpapers = () => {
 
   return (
     <Popover className="relative flex items-center">
-      <PopoverButton className="shrink-0 rounded text-sm hover:bg-selected focus:outline-none sm:px-2 sm:py-1">
+      <PopoverButton
+        data-umami-event="Opened Wallpapers"
+        className="shrink-0 rounded text-sm hover:bg-selected focus:outline-none sm:px-2 sm:py-1"
+      >
         <Image
           src={Wallpaper}
           alt="Wallpapers"
@@ -43,6 +46,7 @@ const Wallpapers = () => {
               key={wallpaper.id}
               onClick={() => handleWallpaperClick(wallpaper.path)}
               className="relative"
+              data-umami-event="Changed Wallpaper"
             >
               <Image
                 src={wallpaper.path}

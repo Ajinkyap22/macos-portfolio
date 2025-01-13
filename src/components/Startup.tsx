@@ -17,7 +17,7 @@ const Startup = ({ status, bootUp }: Props) => {
       <Image src={AppleIcon} alt="Apple Icon" className="h-24 w-24" />
 
       {status === "booting" ? (
-        <div className="h-2 w-1/3  rounded-full bg-zinc-500 sm:w-1/5">
+        <div className="h-2 w-1/3 rounded-full bg-zinc-500 sm:w-1/5">
           <div className="animate-fill h-2 rounded-full bg-white"></div>
         </div>
       ) : (
@@ -30,6 +30,7 @@ const Startup = ({ status, bootUp }: Props) => {
             variant="transparent"
             className="!rounded bg-white font-medium text-black"
             onClick={bootUp}
+            umamiEvent="Booted up"
           >
             Click to boot
           </Button>

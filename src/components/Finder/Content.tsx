@@ -68,6 +68,7 @@ const Content = ({
               disabled={currentIndex <= 0}
               className="h-3 w-3 disabled:opacity-50 sm:h-4 sm:w-4"
               onClick={handleBack}
+              data-umami-event="Navigated back in finder"
             >
               <Image src={Back} alt="Back" />
             </button>
@@ -76,6 +77,7 @@ const Content = ({
               disabled={currentIndex >= history.length - 1}
               className="h-3 w-3 disabled:opacity-50 sm:h-4 sm:w-4"
               onClick={handleForward}
+              data-umami-event="Navigated forward in finder"
             >
               <Image src={Forward} alt="Forward" />
             </button>

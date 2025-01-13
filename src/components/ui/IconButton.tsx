@@ -10,6 +10,7 @@ type Props = {
   iconClassName?: string;
   className?: string;
   isDisabled?: boolean;
+  umamiEvent?: string;
   handleClick?: () => void;
 };
 
@@ -19,6 +20,7 @@ const IconButton = ({
   iconClassName,
   className,
   isDisabled = false,
+  umamiEvent,
   handleClick,
 }: Props) => {
   return (
@@ -31,6 +33,7 @@ const IconButton = ({
         )}
         onClick={handleClick}
         disabled={isDisabled}
+        data-umami-event={umamiEvent}
       >
         <Image
           src={icon}

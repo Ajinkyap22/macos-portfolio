@@ -38,6 +38,7 @@ const DraggableFile = ({
       ref={setNodeRef}
       onDoubleClick={isMobile ? undefined : handleOpen}
       onClick={isMobile ? handleOpen : undefined}
+      data-umami-event={`Clicked/Dragged ${id} File`}
     >
       {children}
     </button>

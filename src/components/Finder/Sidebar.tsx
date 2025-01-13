@@ -61,6 +61,7 @@ const Sidebar = ({ status, section, folder, windowId }: Props) => {
         <button
           data-active={section === "Desktop" && folder === "Desktop"}
           onClick={handleChangeSection}
+          data-umami-event="Navigated to desktop"
           className="flex w-full shrink-0 items-center gap-x-1 rounded p-0.5 text-mini text-textPrimary hover:bg-tooltip data-[active='true']:bg-tooltip sm:gap-x-1.5 sm:p-1.5 sm:text-regular"
         >
           <Image

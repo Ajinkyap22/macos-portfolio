@@ -99,6 +99,7 @@ const Skill = ({
         data-open={open}
         className="data-[open='true']:open relative min-h-0 min-w-0"
         data-tooltip-id={name}
+        data-umami-event={`Clicked ${name} in dock`}
         onClick={onClick}
       >
         <Image

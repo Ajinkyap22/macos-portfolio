@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Script from "next/script";
 
 import type { Metadata } from "next";
 import "@/app/globals.css";
@@ -11,6 +12,9 @@ import LaunchpadProvider from "@/providers/LaunchpadProvider";
 import StartUpProvider from "@/providers/StartupProvider";
 import ToastProvider from "@/providers/ToastProvider";
 import WallpaperProvider from "@/providers/WallpaperProvider";
+
+const SCRIPT_SRC = process.env.SCRIPT_SRC;
+const WEBSITE_ID = process.env.WEBSITE_ID;
 
 const SFPro = localFont({
   src: [
@@ -73,6 +77,8 @@ export default function RootLayout({
             </WallpaperProvider>
           </FullscreenProvider>
         </FinderProvider>
+
+        <Script src={SCRIPT_SRC} data-website-id={WEBSITE_ID} />
       </body>
     </html>
   );

@@ -68,6 +68,7 @@ export const Toast: React.FC<ToastProps> = ({
         <button
           onClick={onClose}
           title="Close"
+          data-umami-event="Closed Toast"
           className="absolute -left-1 -top-1 z-10 flex items-center justify-center !rounded-full bg-alert !px-1 !py-1 opacity-0 shadow-all-around group-hover:opacity-100"
         >
           <Image src={Close} alt="Close" className="h-2.5 w-2.5" />

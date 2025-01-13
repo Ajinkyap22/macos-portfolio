@@ -14,7 +14,7 @@ import { WallpaperContext } from "@/providers/WallpaperProvider";
 const Fullscreen = dynamic(() => import("@/components/FullScreen"), {
   ssr: false,
 });
-const Launchpad = dynamic(() => import('@/components/Launchpad'));
+const Launchpad = dynamic(() => import("@/components/Launchpad"));
 
 type Props = {
   children: React.ReactNode;
