@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-const DEFAULT_WALLPAPER_PATH = "/wallpapers/4.png";
+const DEFAULT_WALLPAPER_PATH = "/wallpapers/6.png";
 
 interface WallpaperContextType {
   wallpaperPath: string;

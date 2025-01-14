@@ -11,7 +11,8 @@ export const featuresData = `- macOS-like navigation in the Finder
  - Projects folder with webpage files that redirect to GitHub repos
  - Social Links in the top-left corner
  - Text files for Education, Experience, and About sections
+  - Analytics
+  
 Coming soon:
  - Resizable windows
- - Analytics
 `;
