@@ -12,7 +12,6 @@ export const featuresData = `- macOS-like navigation in the Finder
  - Social Links in the top-left corner
  - Text files for Education, Experience, and About sections
   - Analytics
-  
 Coming soon:
  - Resizable windows
 `;

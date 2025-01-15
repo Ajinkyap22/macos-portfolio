@@ -243,6 +243,7 @@ const windowReducer = (state: Window[], action: Action) => {
 export const FinderContext = createContext<{
   windows: Window[];
   isAnyWindowMaximized: boolean;
+  currentWindow: Window | null;
   openWindow: (section: string, folder: FolderType, type: Type) => void;
   closeWindow: (id: string) => void;
   minimizeWindow: (id: string) => void;
@@ -255,6 +256,7 @@ export const FinderContext = createContext<{
 }>({
   windows: [],
   isAnyWindowMaximized: false,
+  currentWindow: null,
   openWindow: () => {},
   closeWindow: () => {},
   minimizeWindow: () => {},
@@ -276,6 +278,13 @@ const FinderProvider = ({ children }: Props) => {
   // check if any of the windows are maximized
   const isAnyWindowMaximized = windows.some(
     (window) => window.status === WindowStatus.Maximized,
+  );
+
+  const openWindows = windows.filter((window) => window.status !== "minimized");
+
+  const currentWindow = openWindows.reduce(
+    (prev, current) => (prev.zIndex > current.zIndex ? prev : current),
+    openWindows[0] || null,
   );
 
   const openWindow = (section: string, folder: FolderType, type: Type) => {
@@ -319,6 +328,7 @@ const FinderProvider = ({ children }: Props) => {
       value={{
         windows,
         isAnyWindowMaximized,
+        currentWindow,
         openWindow,
         closeWindow,
         minimizeWindow,

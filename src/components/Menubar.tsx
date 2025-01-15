@@ -26,7 +26,7 @@ const LiveDate = dynamic(() => import("@/components/LiveDate"), {
 const MacMenu = dynamic(() => import("@/components/MacMenu"));
 
 const Menubar = () => {
-  const { isAnyWindowMaximized } = useContext(FinderContext);
+  const { isAnyWindowMaximized, currentWindow } = useContext(FinderContext);
 
   return (
     <div
@@ -39,7 +39,7 @@ const Menubar = () => {
         <MacMenu />
 
         <span className="rounded px-1 text-regular font-bold text-white hover:bg-selected sm:px-2 sm:py-1">
-          Finder
+          {currentWindow?.type ?? "Finder"}
         </span>
 
         {/* social links */}
